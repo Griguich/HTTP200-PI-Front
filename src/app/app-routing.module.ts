@@ -4,24 +4,23 @@ import { AllTemplateUserComponent } from './FrontOffice/all-template-user/all-te
 import { BodyUserComponent } from './FrontOffice/body-user/body-user.component';
 import { AllTemplateAdminComponent } from './BackOffice/all-template-admin/all-template-admin.component';
 import { BodyAdminComponent } from './BackOffice/body-admin/body-admin.component';
-import { ReservationComponent } from './Models/reservation/reservation.component';
-import { ResComponent } from './FrontOffice/res/res.component';
+import { ReservationComponent } from './FrontOffice/reservation/reservation.component';
 
 const routes: Routes = [
   {
     path: 'user',
     component: AllTemplateUserComponent,
     children: [
-      {
-        path: 'home',
-        component: BodyUserComponent,
-        children: [
-          {
-            path: 'reservation',
-            component: ResComponent
-          }
-        ]
-      }
+    {path : 'home',
+    component : BodyUserComponent},
+    ]
+  },
+  {
+    path: 'user',
+    component: AllTemplateUserComponent,
+    children: [
+    {path : 'reservation',
+    component : ReservationComponent},
     ]
   },
   {
