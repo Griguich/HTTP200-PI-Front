@@ -1,0 +1,46 @@
+<h2>Add Publications</h2>
+<fieldset class="info-generales">
+<form #form="ngForm" (ngSubmit)="onAddPublication(form.value)">
+  <label for="userId">User ID:</label>
+  <input type="text" id="userId" [(ngModel)]="newPublication.user" name="user">
+  <br>
+  <label for="vis">Visibility:</label>
+  <select id="vis" [(ngModel)]="newPublication.vis" name="vis">
+    <option value="publique">Publique</option>
+    <option value="privee">Privée</option>
+  </select>
+  <br>
+  <label for="titrePub">Title:</label>
+  <input type="text" id="titrePub" [(ngModel)]="newPublication.titrePub" name="titrePub" required>
+  <br>
+  <label for="contenuPub">Description:</label>
+  <textarea id="contenuPub" [(ngModel)]="newPublication.contenuPub" name="contenuPub" required></textarea>
+  <br>
+  <label for="image">Image URL:</label>
+  <input type="text" id="image" [(ngModel)]="newPublication.image" name="image">
+  <br>
+  <button type="submit">Add Publication</button>
+</form>
+</fieldset>
+
+
+
+
+<h2>Publications List</h2>
+<fieldset class="info-generales">
+
+<ul>
+  <li *ngFor="let publication of publications">
+    <div class="publication-item">
+    <img [src]="publication.image" [alt]="publication.titrePub">
+    <h3>{{ publication.titrePub }}</h3>
+    <p>{{ publication.contenuPub }}</p>
+    <button (click)="onDeletePublication(publication.idPub)">Delete</button>
+    <button (click)="onUpdatePublication(publication.idPub,publication)">Update</button>
+    </div>
+  </li>
+</ul>
+</fieldset>
+
+
+

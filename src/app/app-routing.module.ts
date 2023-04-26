@@ -4,8 +4,8 @@ import { AllTemplateUserComponent } from './FrontOffice/all-template-user/all-te
 import { BodyUserComponent } from './FrontOffice/body-user/body-user.component';
 import { AllTemplateAdminComponent } from './BackOffice/all-template-admin/all-template-admin.component';
 import { BodyAdminComponent } from './BackOffice/body-admin/body-admin.component';
-import { ReservationComponent } from './Models/reservation/reservation.component';
 import { ResComponent } from './FrontOffice/res/res.component';
+import { PublicationComponent } from './publication/publication.component';
 
 const routes: Routes = [
   {
@@ -22,16 +22,21 @@ const routes: Routes = [
           }
         ]
       }
+
     ]
+    
   },
   {
     path: 'admin',
     component: AllTemplateAdminComponent,
     children: [
-      {path : 'home',
-    component : BodyAdminComponent}
+      {
+        path: 'home',
+        component: BodyAdminComponent
+      }
     ]
-  }
+  },
+  {path:'publication',component:PublicationComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
