@@ -14,6 +14,12 @@ import { AllTemplateUserComponent } from './FrontOffice/all-template-user/all-te
 import { HomeComponent } from './FrontOffice/home/home.component';
 import { NavBarAdminComponent } from './BackOffice/nav-bar-admin/nav-bar-admin.component';
 import { ReservationComponent } from './FrontOffice/reservation/reservation.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { AllresComponent } from './BackOffice/all-template-admin/allres/allres.component';
+
+
 
 @NgModule({
   declarations: [
@@ -33,13 +39,23 @@ import { ReservationComponent } from './FrontOffice/reservation/reservation.comp
     NavBarAdminComponent,
     SideBarComponent,
     BodyAdminComponent,
-    FooterAdminComponent
+    FooterAdminComponent,
+    ReservationComponent,
+    AllresComponent,
+    
     
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
+    
+    
   ],
+
+  
+   
   providers: [],
   bootstrap: [AppComponent]
 })

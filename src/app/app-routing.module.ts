@@ -5,6 +5,7 @@ import { BodyUserComponent } from './FrontOffice/body-user/body-user.component';
 import { AllTemplateAdminComponent } from './BackOffice/all-template-admin/all-template-admin.component';
 import { BodyAdminComponent } from './BackOffice/body-admin/body-admin.component';
 import { ReservationComponent } from './FrontOffice/reservation/reservation.component';
+import { AllresComponent } from './BackOffice/all-template-admin/allres/allres.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,14 @@ const routes: Routes = [
     children: [
       {path : 'home',
     component : BodyAdminComponent}
+    ]
+  },
+  {
+    path: 'admin',
+    component: AllTemplateAdminComponent,
+    children: [
+      {path : 'allres',
+    component : AllresComponent}
     ]
   }
 ];

@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component ,OnInit} from '@angular/core';
+import { Reservation } from 'src/app/Models/reservation';
+import { ReservationimplService } from 'src/app/Services/reservationimpl.service';
+import { FormsModule  } from '@angular/forms';
+
+
+
 
 @Component({
   selector: 'app-reservation',
@@ -6,5 +12,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./reservation.component.css']
 })
 export class ReservationComponent {
+  
+  reservation :Reservation [] = [] ;
+  selectedReservation :any ={} ;
+  newReservation:any ={} ;
+  constructor(private ReservationimplService :ReservationimplService){}
 
-}
+  
+  AddRes(formValue: any) :void {
+  
+    this.ReservationimplService.addRes(this.newReservation).subscribe(newReservation => {
+    
+      this.newReservation = new Reservation();
+        });
+      }
+      
+     }
+
+
