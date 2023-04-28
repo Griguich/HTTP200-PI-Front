@@ -1,30 +1,4 @@
-<h2>Add Publications</h2>
-<fieldset class="info-generales">
-<form #form="ngForm" (ngSubmit)="onAddPublication(form.value)">
-  <label for="userId">User ID:</label>
-  <input type="text" id="userId" [(ngModel)]="newPublication.user" name="user">
-  <br>
-  <label for="vis">Visibility:</label>
-  <select id="vis" [(ngModel)]="newPublication.vis" name="vis">
-    <option value="publique">Publique</option>
-    <option value="privee">Privée</option>
-  </select>
-  <br>
-  <label for="titrePub">Title:</label>
-  <input type="text" id="titrePub" [(ngModel)]="newPublication.titrePub" name="titrePub" required>
-  <br>
-  <label for="contenuPub">Description:</label>
-  <textarea id="contenuPub" [(ngModel)]="newPublication.contenuPub" name="contenuPub" required></textarea>
-  <br>
-  <label for="image">Image URL:</label>
-  <input type="text" id="image" [(ngModel)]="newPublication.image" name="image">
-  <br>
-  <button type="submit">Add Publication</button>
-</form>
-</fieldset>
-
-
-
+<app-header-user></app-header-user>
 
 <h2>Publications List</h2>
 <fieldset class="info-generales">
@@ -43,4 +17,6 @@
 </fieldset>
 
 
+
+<app-footer-user></app-footer-user>
 

@@ -6,12 +6,16 @@ import { AllTemplateAdminComponent } from './BackOffice/all-template-admin/all-t
 import { BodyAdminComponent } from './BackOffice/body-admin/body-admin.component';
 import { ResComponent } from './FrontOffice/res/res.component';
 import { PublicationComponent } from './publication/publication.component';
+import { AddPublicationComponent } from './add-publication/add-publication.component';
 
 const routes: Routes = [
   {
     path: 'user',
     component: AllTemplateUserComponent,
     children: [
+      {path:'publication',component:PublicationComponent},
+      {path:'addpublication',component:AddPublicationComponent},
+
       {
         path: 'home',
         component: BodyUserComponent,
@@ -35,8 +39,8 @@ const routes: Routes = [
         component: BodyAdminComponent
       }
     ]
-  },
-  {path:'publication',component:PublicationComponent}
+  }
+
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

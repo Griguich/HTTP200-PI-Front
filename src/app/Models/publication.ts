@@ -4,12 +4,12 @@ export class Publication {
     contenuPub?: string;
     titrePub?: string;
     vis?: Visibilite;
-    dateCreationPub?: Date;
+    dateCreationPub?: Date ;
     image?: string;
     likeCount?: number;
-    dislikeCount?: number;
-    isFavorite?: boolean;
-    favoriteDate?: Date;
+    dislikeCount?: number ;
+    isFavorite?: boolean ;
+    favoriteDate?: Date ;
     user?: any;
     commentaires?: any[];
     likes?: any[];

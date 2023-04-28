@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Publication } from '../Models/publication';
+import { map } from 'rxjs';
+import { HttpEventType } from '@angular/common/http';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -35,4 +39,6 @@ export class PublicationService {
   getPublicationsByUserId(userId: number): Observable<Publication[]> {
     return this.http.get<Publication[]>(`${this.baseUrl}/RetrievePublicationUserById/${userId}`);
   }
+
+  
 }

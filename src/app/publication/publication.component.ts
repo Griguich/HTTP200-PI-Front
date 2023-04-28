@@ -10,7 +10,7 @@ import { Visibilite } from '../Models/visibilite';
 })
 export class PublicationComponent implements OnInit {
   publications: Publication[] = [];
-  newPublication: Publication = {
+ /* newPublication: Publication = {
     idPub: 0,
     titrePub: '',
     contenuPub: '',
@@ -25,9 +25,11 @@ export class PublicationComponent implements OnInit {
     commentaires: [],
     likes: [],
     favoriteUsers: []
-  };
+  };*/
 
-  constructor(private publicationService: PublicationService) { }
+  constructor(private publicationService: PublicationService) {
+    
+   }
 
   ngOnInit(): void {
     this.getPublications();
@@ -43,32 +45,19 @@ export class PublicationComponent implements OnInit {
       .subscribe(publications => this.publications = publications);
   }
 
-  onAddPublication(formValue: any): void {
-    const userId = formValue.user;
-    const vis = formValue.vis;
-    this.newPublication.vis = vis;
-    this.publicationService.addPublication(this.newPublication, userId)
+  /*onAddPublication(publication: Publication): void {
+    const userId = 1; // replace with the actual user ID
+    publication.dateCreationPub = new Date(); // set the date to the current date
+    publication.dislikeCount=0;
+    publication.likeCount=0;
+    publication.isFavorite=false;
+    
+    this.publicationService.addPublication(publication, userId)
       .subscribe(newPublication => {
         this.publications.push(newPublication);
-        this.newPublication = {
-          idPub: 0,
-          titrePub: '',
-          contenuPub: '',
-          image: '',
-          vis: Visibilite.publique,
-          dateCreationPub: new Date(),
-          likeCount: 0,
-          dislikeCount: 0,
-          isFavorite: false,
-          favoriteDate: new Date(),
-          user: null,
-          commentaires: [],
-          likes: [],
-          favoriteUsers: []
-        };
+        this.newPublication = new Publication();
       });
-  }
-  
+  }*/
 
   onUpdatePublication(idPub: number, publication: Publication): void {
     this.publicationService.updatePublication(idPub, publication)
