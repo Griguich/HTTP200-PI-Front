@@ -6,6 +6,8 @@ import { Feedback } from '../Models/Feedback';
   providedIn: 'root'
 })
 export class ProfileService {
+  newProfile: any;
+  file!: string | Blob;
 
   constructor(private http: HttpClient) { } 
   private endpoint = 'http://localhost:8080/api';
@@ -37,5 +39,7 @@ updateFeedback(feedback: Feedback): Observable<any> {
   const url = `${this.endpoint}/updateFeedback`;
   return this.http.put(url, feedback);
 }
-
+uploadImage(formData: FormData) {
+  return this.http.post('/api/uploadImage', formData);
+}
 }
