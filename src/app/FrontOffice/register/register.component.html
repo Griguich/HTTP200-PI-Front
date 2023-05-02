@@ -1,0 +1,147 @@
+ <!-- Loader -->
+ <head>
+        <div id="preloader">
+            <div id="status">
+                <div class="spinner">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
+            </div>
+        </div>
+    </head>
+        <!-- Navigation Bar-->
+        <section class="bg-home" style="background-image: url('/assets/images/home/bg-login.jpg');">
+            <div class="bg-overlay"></div>
+            <div class="home-center">
+                <div class="home-desc-center">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="bg-white p-30 rounded box-shadow">
+                                    <div class="text-center">
+                                        <h4><a href="index-2.html"><img src="/assets/images/profile.png" height="40" width="40" alt="logo"></a></h4>
+                                        <div class="spacer-15"></div>
+                                    </div>
+                                    <form
+                                    *ngIf="!isSuccessful"
+                                    name="form"
+                                    (ngSubmit)="f.form.valid && onSubmit()"
+                                    #f="ngForm"
+                                    novalidate
+                                  >
+                                        <div class="row">
+                                            <div class="col-lg-12 mt-2">
+                                                <label class=""><b>Username</b></label>
+                                                <input
+                                                type="text"
+                                                class="form-control"
+                                                name="username"
+                                                [(ngModel)]="form.username"
+                                                required
+                                                minlength="3"
+                                                maxlength="20"
+                                                #username="ngModel"
+                                                [ngClass]="{ 'is-invalid': f.submitted && username.errors }"
+                                              />
+                                              <div class="invalid-feedback" *ngIf="username.errors && f.submitted">
+                                                <div *ngIf="username.errors['required']">Username is required</div>
+                                                <div *ngIf="username.errors['minlength']">
+                                                  Username must be at least 3 characters
+                                                </div>
+                                                <div *ngIf="username.errors['maxlength']">
+                                                  Username must be at most 20 characters
+                                                </div>
+                                              </div>                                            </div>
+                                            <div class="col-lg-12 mt-2">
+                                                
+                                                <label class=""><b>First Name</b></label>
+                                                <input type="text" class="form-control" placeholder="First Name" name="firstName" required="">
+                                            </div>
+
+                                            <div class="col-lg-12 mt-2">
+                                                
+                                                <label class=""><b>Last Name</b></label>
+                                                <input type="text" class="form-control" placeholder="Last Name" name="lastName" required="">
+                                            </div>
+                                            
+                                            <div class="col-lg-12 mt-2">
+                                                    <label class=""><b>Email</b></label>
+                                                    <label for="email">Email</label>
+                                                    <input
+                                                      type="email"
+                                                      class="form-control"
+                                                      name="email"
+                                                      [(ngModel)]="form.email"
+                                                      required
+                                                      email
+                                                      #email="ngModel"
+                                                      [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
+                                                    />
+                                                    <div class="invalid-feedback" *ngIf="email.errors && f.submitted">
+                                                      <div *ngIf="email.errors['required']">Email is required</div>
+                                                      <div *ngIf="email.errors['email']">
+                                                        Email must be a valid email address
+                                                      </div>
+                                                    </div>                                            </div>
+
+                                            <div class="col-lg-12 mt-2">
+                                                <label class=""><b>Phone Number</b></label>
+                                            <input type="tel" class="form-control" name="phoneNumber" placeholder="+216 " required="">
+                                                 </div>
+
+                                            <div class="col-lg-12 mt-2">
+                                                
+                                                <label class=""><b>Birthday</b></label>
+                                                <input type="date" class="form-control" id="birthdate" name="birthday" required="">
+                                            </div>
+
+                                            <div class="col-lg-12 mt-2">
+                                                    <label class=""><b>Password</b></label>
+                                                    <input
+                                                    type="password"
+                                                    class="form-control"
+                                                    name="password"
+                                                    [(ngModel)]="form.password"
+                                                    required
+                                                    minlength="6"
+                                                    #password="ngModel"
+                                                    [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
+                                                  />
+                                                  <div class="invalid-feedback" *ngIf="password.errors && f.submitted">
+                                                    <div *ngIf="password.errors['required']">Password is required</div>
+                                                    <div *ngIf="password.errors['minlength']">
+                                                      Password must be at least 6 characters
+                                                    </div>
+                                                  </div>                                            </div>
+                                            <div class="col-lg-12 mt-2">
+                                                    <label class=""><b>Confirm Password</b></label>
+                                                <input type="password" class="form-control" placeholder="Confirm Password Here" required="">
+                                            </div>
+                                            <div class="col-lg-12 mt-2">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                                    <label class="custom-control-label" for="customCheck1">I Accept <a href="#">Terms And Condition</a></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 mt-4 mb-3">
+                                                <button class="btn btn-custom w-100">Register</button>
+                                            </div>
+                                            <div class="mx-auto">
+                                                <p class="mb-0 mt-2"><small class="text-dark mr-2">Already have an account ?</small> <a routerLink="/Login" class="text-dark font-weight-bold">Login</a></p>
+                                            </div>
+                                        </div>
+                                        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                                            Signup failed!<br />{{ errorMessage }}
+                                          </div>
+                                    </form>
+                                    <div class="alert alert-success" *ngIf="isSuccessful">
+                                        Your registration is successful!
+                                      </div>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+  

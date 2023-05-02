@@ -13,13 +13,19 @@ import { BodyUserComponent } from './FrontOffice/body-user/body-user.component';
 import { AllTemplateUserComponent } from './FrontOffice/all-template-user/all-template-user.component';
 import { HomeComponent } from './FrontOffice/home/home.component';
 import { NavBarAdminComponent } from './BackOffice/nav-bar-admin/nav-bar-admin.component';
-import { ReservationComponent } from './FrontOffice/reservation/reservation.component';
+import { LoginComponent } from './FrontOffice/login/login.component';
+import { RegisterComponent } from './FrontOffice/register/register.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
-import { AllresComponent } from './BackOffice/all-template-admin/allres/allres.component';
-
-
+import { httpInterceptorProviders } from './FrontOffice/_helpers/http.interceptor';
+import { BoardAdminComponent } from './BackOffice/board-admin/board-admin.component';
+import { ProfileComponent } from './BackOffice/profile/profile.component';
+import { BoardUserComponent } from './FrontOffice/board-user/board-user.component';
+import { BoardWorkerComponent } from './FrontOffice/board-worker/board-worker.component';
+import { ForgetPasswordComponent } from './FrontOffice/forget-password/forget-password.component';
+import { UserCreateComponent } from './BackOffice/userCrud/user-create/user-create.component';
+import { UserDisplayComponent } from './BackOffice/userCrud/user-display/user-display.component';
+import { UserUpdateComponent } from './BackOffice/userCrud/user-update/user-update.component';
 
 @NgModule({
   declarations: [
@@ -40,23 +46,24 @@ import { AllresComponent } from './BackOffice/all-template-admin/allres/allres.c
     SideBarComponent,
     BodyAdminComponent,
     FooterAdminComponent,
-    ReservationComponent,
-    AllresComponent,
-    
-    
+    LoginComponent,
+    RegisterComponent,
+    BoardAdminComponent,
+    ProfileComponent,
+    BoardUserComponent,
+    BoardWorkerComponent,
+    ForgetPasswordComponent,
+    UserCreateComponent,
+    UserDisplayComponent,
+    UserUpdateComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule
-    
-    
   ],
-
-  
-   
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

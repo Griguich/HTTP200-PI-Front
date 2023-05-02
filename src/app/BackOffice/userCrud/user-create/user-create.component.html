@@ -1,0 +1,23 @@
+<form (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Email</label>
+        <input  [(ngModel)]="user.email" id="titre" name="titre" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+    </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Password</label>
+        <input  [(ngModel)]="user.password" id="titre" name="titre" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputAddress">Username</label>
+      <input  [(ngModel)]="user.username" id="titre" name="titre" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Add User</button>
+  </form>
+<app-footer-admin></app-footer-admin>
