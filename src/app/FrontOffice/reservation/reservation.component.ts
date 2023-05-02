@@ -2,6 +2,7 @@ import { Component ,OnInit} from '@angular/core';
 import { Reservation } from 'src/app/Models/reservation';
 import { ReservationimplService } from 'src/app/Services/reservationimpl.service';
 import { FormsModule  } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -18,12 +19,14 @@ export class ReservationComponent {
   newReservation:any ={} ;
   constructor(private ReservationimplService :ReservationimplService){}
 
-  
+ 
+
   AddRes(formValue: any) :void {
   
     this.ReservationimplService.addRes(this.newReservation).subscribe(newReservation => {
     
       this.newReservation = new Reservation();
+      
         });
       }
       

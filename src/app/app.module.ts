@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterAdminComponent } from './BackOffice/footer-admin/footer-admin.component';
@@ -17,7 +17,12 @@ import { ReservationComponent } from './FrontOffice/reservation/reservation.comp
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { AllresComponent } from './BackOffice/all-template-admin/allres/allres.component';
+import { AllresComponent } from './BackOffice/allres/allres.component';
+import { ChatComponent } from './FrontOffice/chat-message/chat-message.component';
+import { NotificationPopupComponent } from './notification-popup/notification-popup.component';
+import { ToastrModule,ToastNoAnimationModule,ToastNoAnimation } from 'ngx-toastr';
+import { AllnotComponent } from './BackOffice/allnot/allnot.component';
+
 
 
 
@@ -42,6 +47,11 @@ import { AllresComponent } from './BackOffice/all-template-admin/allres/allres.c
     FooterAdminComponent,
     ReservationComponent,
     AllresComponent,
+    ChatComponent,
+    NotificationPopupComponent,
+    AllnotComponent,
+  
+  
     
     
   ],
@@ -49,7 +59,9 @@ import { AllresComponent } from './BackOffice/all-template-admin/allres/allres.c
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
     
     
   ],
