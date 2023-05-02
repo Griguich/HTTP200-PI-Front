@@ -24,6 +24,18 @@
     object-fit: cover;
   }
   
+.profile button {
+  background-color: #fff;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: 700;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
   .profile-username {
     font-size: 24px;
     margin: 0;

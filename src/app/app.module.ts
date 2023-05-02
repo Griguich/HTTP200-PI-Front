@@ -21,6 +21,8 @@ import { ProfileListComponentComponent } from './profile-list-component/profile-
 import { ProfileFrontComponent } from './profile-front/profile-front.component';
 import { FeedbackBackComponent } from './feedback-back/feedback-back.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
+import { Validators, FormGroup } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +46,7 @@ import { StarRatingComponent } from './star-rating/star-rating.component';
     ProfileListComponentComponent,
     ProfileFrontComponent,
     FeedbackBackComponent,
-    StarRatingComponent
+    StarRatingComponent,
   ],
   imports: [
     BrowserModule,

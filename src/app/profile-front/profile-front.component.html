@@ -15,11 +15,12 @@
       </div>
   </div>
 </section>
+<div class="profile-container">
 <section *ngFor="let profile of profiles" class="profile">
   <div class="profile-image">
       <img src="{{profile.photoprofile}}" />
   </div>
-  <h2 class="profile-username">{{profile.username}}</h2>
+  <h2 class="profile-username">Username</h2>
   <small class="profile-user-handle">{{ '@' + profile.username.toLowerCase().replace(' ', '_') }}</small> 
   <h2 class="profile-username">Sexe</h2>
   <small class="profile-user-handle">{{profile.sexe}}</small> 
@@ -69,7 +70,7 @@
                   </div>   
                   <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
+                      <button type="button" class="btn btn-primary">Add Feedback</button>
       </div>
     </div>
    </div>
@@ -92,14 +93,5 @@
 
       </div>
    </div>
-      <div class="profile-links">
-        <a href="#" class="link link--icon">
-          <i class="ph-twitter-logo"></i>
-        </a>
-        <a href="#" class="link link--icon">
-          <i class="ph-facebook-logo"></i>
-        </a>
-        <a href="#" class="link link--icon">
-          <i class="ph-instagram-logo"></i>
-        </a>
-      </div>
+
+    </div>

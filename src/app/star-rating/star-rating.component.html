@@ -1,7 +1,10 @@
 <div class="row">
     <div class="col-sm-12">
         <ul class="list-inline rating-list" *ngFor="let star of stars" style="display: inline-block" >
-            <li (click)="countStar(star)"><i   class="fa fa-star "></i></li> 
+            <li (click)="countStar(star)"
+            [ngClass]="{'selected': (star <= selectedValue)}">
+                <i class="fa fa-star"></i>
+        </li> 
         </ul>
     </div>
   </div>
