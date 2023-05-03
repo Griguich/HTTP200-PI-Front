@@ -16,7 +16,7 @@ import { NavBarAdminComponent } from './BackOffice/nav-bar-admin/nav-bar-admin.c
 import { LoginComponent } from './FrontOffice/login/login.component';
 import { RegisterComponent } from './FrontOffice/register/register.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { httpInterceptorProviders } from './FrontOffice/_helpers/http.interceptor';
 import { BoardAdminComponent } from './BackOffice/board-admin/board-admin.component';
 import { ProfileComponent } from './BackOffice/profile/profile.component';
@@ -26,6 +26,7 @@ import { ForgetPasswordComponent } from './FrontOffice/forget-password/forget-pa
 import { UserCreateComponent } from './BackOffice/userCrud/user-create/user-create.component';
 import { UserDisplayComponent } from './BackOffice/userCrud/user-display/user-display.component';
 import { UserUpdateComponent } from './BackOffice/userCrud/user-update/user-update.component';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 @NgModule({
   declarations: [
@@ -56,12 +57,15 @@ import { UserUpdateComponent } from './BackOffice/userCrud/user-update/user-upda
     UserCreateComponent,
     UserDisplayComponent,
     UserUpdateComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    NgxCaptchaModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

@@ -1,15 +1,15 @@
 export class User {
     id!: number;
-    //firstname!: String;
-   // lastname!: String;
+    nom!: String;
+    prenom!: String;
     email!: String;
     username!: String;
     password!: String;
-    //tel!: number;
+    phoneNumber!: number;
     //address!: String;
     //enabled!:boolean;
    // role!:any[];
-   // datenaissance:Date = new Date;
+    birthDate:Date = new Date;
     constructor(){
     }
 }

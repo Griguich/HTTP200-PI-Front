@@ -14,6 +14,7 @@ import { ProfileComponent } from './BackOffice/profile/profile.component';
 import { UserDisplayComponent } from './BackOffice/userCrud/user-display/user-display.component';
 import { UserCreateComponent } from './BackOffice/userCrud/user-create/user-create.component';
 import { UserUpdateComponent } from './BackOffice/userCrud/user-update/user-update.component';
+import { ForgetPasswordComponent } from './FrontOffice/forget-password/forget-password.component';
 const routes: Routes = [  
   {
     path: 'user',
@@ -45,7 +46,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'usersList', component: UserDisplayComponent},
   { path: 'usersCreate', component: UserCreateComponent},
-  { path: 'usersUpdate', component: UserUpdateComponent}
+  { path: 'usersUpdate', component: UserUpdateComponent},
+  { path: 'ForgotPassword', component: ForgetPasswordComponent}
 
 
 ];
