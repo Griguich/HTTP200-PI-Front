@@ -12,7 +12,7 @@ declare var $: any;
   styleUrls: ['./profile-front.component.css']
 })
 export class ProfileFrontComponent { 
-
+  myInput: string = "";
   profiles: Profile[] = [];
   Feedbacks : Feedback[] = [];
   selectedProfile: any = {};
@@ -22,7 +22,9 @@ export class ProfileFrontComponent {
   selectedValue!: number;
   feedback : Feedback[] = [];
   analysisImage !: string;
-  selectedFile!: File;
+  selectedFile!: File; 
+  newFeedback: any = {};
+  newRating: number = 0;
   constructor(private profileService: ProfileService,private FeedbackService: FeedbackService) { }
   ngOnInit() {
     this.profileService.getProfiles().subscribe(profiles => {
@@ -87,16 +89,33 @@ deleteFeedback(id: number) {
 selectFeedback(feedback: any) {
   this.selectFeedback = feedback;
 } 
-countStar(star: number,feedback:Feedback) {
-  feedback.rating = star;
-  feedback.profile= this.selectedProfile;
-  console.log('Value of feedback1', feedback); 
-  console.log('Value of Profileselected');
-  console.log('Value of star', star);  
-  this.FeedbackService.updateFeedback(feedback).subscribe(test => {
-    this.selectedFeedback = {};
-  });
+countStar(star: number, newFeedback: Feedback): Feedback {
+  newFeedback.rating = star;
+  newFeedback.profile = this.selectedProfile;
+  console.log('Value of feedback1', newFeedback); 
+  console.log('Value of Profileselected', this.selectedProfile);
+  console.log('Value of star', star);   
+  return newFeedback;
+} 
+
+
+setRating(rating: number) {
+  this.newFeedback.rating = rating;
 }
+addFeedback() {
+  if (this.newFeedback.rating && this.newFeedback.message) {
+    this.newFeedback.createdDate = Date.now();
+    this.newFeedback.updatedDate = Date.now();
+    console.log(this.newFeedback);
+    this.FeedbackService.addFeedback(this.newFeedback).subscribe(res => {
+      this.Feedbacks.push(res);
+      this.newFeedback = {};
+    });
+
+  }
+}
+
+
 feedbackAnalysis(username:string){
   this.FeedbackService.FeedbackAnalysis(username).subscribe((image: Blob) => {
     const reader = new FileReader();
@@ -109,8 +128,6 @@ feedbackAnalysis(username:string){
     };
   }); 
 }
-
-
 
 
 

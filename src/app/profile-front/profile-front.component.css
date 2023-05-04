@@ -171,3 +171,13 @@
   background-color: #0056b3;
 }
 
+.table-container {
+  margin: auto;
+  display: block;
+}
+
+.parent-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
