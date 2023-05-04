@@ -45,17 +45,22 @@
         <div id="navigation">
             <!-- Navigation Menu // Login & Register-->
             <ul class="navigation-menu">
-                <li class="has-submenu">
-                    <a routerLink="/login"><b>Login</b></a><span class="menu-arrow"></span>
-                 <li class="has-submenu">
-                    <a routerLink="/register"><b>Register</b></a><span class="menu-arrow"></span>
+                <li class="">
+                    <li class="has-submenu" style="margin-right: 150px;">
+                        <a  *ngIf="connectedUser"><b  class="text-left" style="color: blue;"><span style="color: green; font-size: medium;">⦿ </span>{{user.username}}</b></a>
                     <li class="has-submenu">
-                        <a routerLink="/logout" (click)="logout()"><b>Logout</b></a><span class="menu-arrow"></span>
-        
+                        <a  *ngIf="!connectedUser" routerLink="/login" ><b>Login</b></a></li>
+                 <li class="has-submenu">
+                    <a *ngIf="!connectedUser" routerLink="/register"><b>Register</b></a>
+                    <li class="has-submenu">
+                        <a  *ngIf="connectedUser" routerLink="/logout"  (click)="logout()"><b>Logout</b></a>
+                        <li class="has-submenu">
+                            <a  *ngIf="connectedUser" routerLink="/UpdateAccount"><b>Update Account</b></a>
+                            
 
                 <li class="has-submenu">
                     <a href="javascript:void(0)">About</a><span class="menu-arrow"></span>
-                    <ul class="submenu">
+                    <ul class="submenu">    
                         <li><a href="about.html">About</a></li>
                         <li><a href="history.html">History</a></li>
                         <li class="has-submenu"><a href="javascript:void(0)">Services</a><span class="submenu-arrow"></span>

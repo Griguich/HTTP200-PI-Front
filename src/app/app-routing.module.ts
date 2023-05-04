@@ -23,8 +23,13 @@ const routes: Routes = [
       {
         path: 'home',
         component: BodyUserComponent,
+      }, 
+      {
+        path: 'UpdateAccount',
+        component: UserUpdateComponent,
       }
     ]
+    
   },
   {
     path: 'admin',
@@ -47,8 +52,10 @@ const routes: Routes = [
   { path: 'usersList', component: UserDisplayComponent},
   { path: 'usersCreate', component: UserCreateComponent},
   { path: 'usersUpdate', component: UserUpdateComponent},
-  { path: 'ForgotPassword', component: ForgetPasswordComponent}
+  { path: 'ForgotPassword', component: ForgetPasswordComponent},
+  { path: 'UpdateAccount', component: UserUpdateComponent}
 
+  // to add 404 not found // unauthorized 403 
 
 ];
 @NgModule({

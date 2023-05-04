@@ -1,17 +1,17 @@
 <div class="row tm-content-row tm-mt-big" style="width: auto; height: auto;">
-    <div class="col-xl-8 col-lg-12 tm-md-12 tm-sm-12 tm-col">
+    <div class="col-xl-12 col-lg-12 tm-md-12 tm-sm-8 tm-col">
         <div class="bg-white tm-block h-100">
             <div class="row">
                 <div class="col-md-8 col-sm-12">
-                    <h2 class="tm-block-title d-inline-block">Users Display</h2>
+                    <h2 class="text-center">Users Display</h2>
 
                 </div>
-                <div class="col-md-4 col-sm-12 text-right"  style="width: auto; height: auto;">
-                    <a [routerLink]="['/usersCreate']" class="btn btn-small btn-primary">Add User</a>
+                <div class="col-md-4 col-sm-12 text-right">
+                    <a [routerLink]="['/usersCreate']" class="btn btn-primary btn-primary">Add User</a>
                 </div>
             </div>
             <div class="table-responsive">
-                <table class="table table-hover table-striped tm-table-striped-even mt-3">
+                <table class="table table-hover table-striped tm-table-striped-even mt-2 " style="border: 3px solid black;" border="">
                     <thead>
                         <tr class="tm-bg-gray">
                         
@@ -27,7 +27,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr  *ngFor = "let i of user">
+                        <tr  *ngFor = "let i of user | paginate: { itemsPerPage: 5, currentPage: p, id:'first' }">
         <td class="text-center">{{ i.username }}</td>
         <td class="text-center">{{ i.nom }}</td>
         <td class="text-center">{{ i.prenom }}</td>
@@ -36,12 +36,20 @@
         <td class="text-center">{{ i.birthDate }}</td>
         <td class="text-center">{{ i.password }}</td>
                             <td class="text-center"><i class="fas fa-trash-alt tm-trash-icon" (click) = "deleteUser(i.id)"></i>
-                              <br>
-                            
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                <td class="text-center"><button class="btn-primary" (click) = "enabledUser(i.id)">Enable User</button>
+                                    <td class="text-center"><button class="button btn-primary" (click) = "disableUser(i.id)">Disable User</button>
+                                        <td class="text-center">
+                                            <ngx-qrcode 
+                                              [elementType]="elementType" 
+                                              [value]="' === User Info: ==== \n * Username: ' + i.username + '\n * First Name: ' + i.nom + '\n * Birthdate: ' + i.birthDate + '\n * Phone Number: ' + i.phoneNumber"  
+                                              [errorCorrectionLevel]="correctionLevel">
+                                            </ngx-qrcode>                                          
+                                             <br>
+                                        </td>
+                                 </tr>
+                              </tbody>
+                          </table> 
+                    <pagination-controls (pageChange)="p = $event" id="first"></pagination-controls>
             </div> 
         </div>
     </div>

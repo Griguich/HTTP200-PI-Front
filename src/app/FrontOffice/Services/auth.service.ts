@@ -75,4 +75,10 @@ updatePassword(email: string, password: string) {
 forgotPassword(email: string) {
   return this.http.get('http://localhost:8080/api/auth/sendme/' + email);
 }
+enableUser(id: number){
+  return this.http.put(`${AUTH_API}enable/${id}`,null)
+}
+disableUser(id: number){
+  return this.http.put(`${AUTH_API}disable/${id}`,null)
+}
 }

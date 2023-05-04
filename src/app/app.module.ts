@@ -27,6 +27,8 @@ import { UserCreateComponent } from './BackOffice/userCrud/user-create/user-crea
 import { UserDisplayComponent } from './BackOffice/userCrud/user-display/user-display.component';
 import { UserUpdateComponent } from './BackOffice/userCrud/user-update/user-update.component';
 import { NgxCaptchaModule } from 'ngx-captcha';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,6 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     UserCreateComponent,
     UserDisplayComponent,
     UserUpdateComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -65,7 +66,9 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxCaptchaModule
+    NgxCaptchaModule,
+    NgxPaginationModule,
+    NgxQRCodeModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

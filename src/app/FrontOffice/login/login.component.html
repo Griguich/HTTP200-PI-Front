@@ -69,6 +69,7 @@
                                       [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
                                     />
                                     <!-- To add toggle password visibility -->
+                                    
                                     <div class="invalid-feedback" *ngIf="password.errors && f.submitted">
                                       <div *ngIf="password.errors['required']">Password is required ⚠</div>
                                       <div *ngIf="password.errors['minlength']">

@@ -10,6 +10,7 @@ import { User } from 'src/app/Models/user';
   styleUrls: ['./user-create.component.css']
 })
 export class UserCreateComponent implements OnInit{
+  
   user: User = new User();
 
   constructor(private userService: AuthService, private router: Router) { }
@@ -17,7 +18,6 @@ export class UserCreateComponent implements OnInit{
   ngOnInit(): void {
   }
 
- // types : string[] = ['DON', 'VACCINATION','SENSIBILISATION'];
 
   saveUser(){
     this.userService.addUser(this.user).subscribe( data =>{

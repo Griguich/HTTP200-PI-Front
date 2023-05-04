@@ -8,12 +8,37 @@ import { EventBusService } from '../_shared/event-bus.service';
   templateUrl: './header-user.component.html',
   styleUrls: ['./header-user.component.css']
 })
-export class HeaderUserComponent{
+export class HeaderUserComponent implements OnInit{
+
+  user:any;
+  connectedUser:any;
 
   constructor(
     private storageService: StorageService,
     private authService: AuthService,
   ) {}
+
+
+  ngOnInit(): void {
+    // Session
+    this.user=this.storageService.getUser();
+    console.log(this.user);
+    console.log(this.user.id);
+
+    //  this.storageService.getUser().subscribe({
+    //   next: (data: any) => {
+    //     console.log("*");
+    //     console.log(data);
+    //   }
+
+    // Connected User
+    this.connectedUser=this.storageService.isLoggedIn();
+    console.log(this.connectedUser);
+
+  };
+  
+
+
 
   
   logout(): void {
@@ -29,4 +54,5 @@ export class HeaderUserComponent{
       }
     });
   }
+ 
 }

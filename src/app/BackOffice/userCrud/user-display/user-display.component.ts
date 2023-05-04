@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/FrontOffice/Services/auth.service';
 import { User } from 'src/app/Models/user';
+import { NgxQRCodeModule, NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
+
 
 @Component({
   selector: 'app-user-display',
@@ -10,6 +12,12 @@ import { User } from 'src/app/Models/user';
 })
 export class UserDisplayComponent implements OnInit{
   user!: User[];
+  p: number =1;
+  count: number =0;
+  title = 'UserQR';
+  elementType = NgxQrcodeElementTypes.URL;
+  correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
+  value = 'u';
 
   constructor(private userService: AuthService,
     private router: Router ) { }
@@ -39,4 +47,19 @@ export class UserDisplayComponent implements OnInit{
 
     })
   }
+  enabledUser(id: number){
+    this.userService.enableUser(id).subscribe( data => {
+      console.log(data);
+      this.getUsers();
+
+    })
+  }
+  disableUser(id: number){
+    this.userService.disableUser(id).subscribe( data => {
+      console.log(data);
+      this.getUsers();
+
+    })
+  }
+  
 }
