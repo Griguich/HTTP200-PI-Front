@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/FrontOffice/Services/auth.service';
 import { User } from 'src/app/Models/user';
 import { NgxQRCodeModule, NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
-
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-user-display',
@@ -11,6 +11,7 @@ import { NgxQRCodeModule, NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels 
   styleUrls: ['./user-display.component.css']
 })
 export class UserDisplayComponent implements OnInit{
+  fileName= 'UsersDataBase.xlsx';
   user!: User[];
   p: number =1;
   count: number =0;
@@ -61,5 +62,19 @@ export class UserDisplayComponent implements OnInit{
 
     })
   }
-  
+  // Export DB as Excel
+  exportexcel(): void
+  {
+    /* pass here the table id */
+    let element = document.getElementById('UsersTable');
+    const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+ 
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+ 
+    /* save to file */  
+    XLSX.writeFile(wb, this.fileName);
+ 
+  }
 }

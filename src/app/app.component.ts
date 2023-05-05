@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { StorageService } from './FrontOffice/Services/storage.service';
 import { AuthService } from './FrontOffice/Services/auth.service';
 import { EventBusService } from './FrontOffice/_shared/event-bus.service';
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   template: '<router-outlet></router-outlet>',
   //styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent  implements OnInit{
   title = 'FrontWebProject';
   private roles: string[] = [];
   isLoggedIn = false;
