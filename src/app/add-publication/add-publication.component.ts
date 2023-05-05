@@ -52,6 +52,7 @@ export class AddPublicationComponent implements OnInit {
 
   likeType!: LikeType  // Default value is LIKE
 
+  favoritePublications!: Publication[];
 
 
   constructor(private likeService: LikeService,private commentaireService: CommentaireService,private publicationService: PublicationService,private http:HttpClient, private router: Router,private modalService: NgbModal) { }
@@ -355,6 +356,12 @@ export class AddPublicationComponent implements OnInit {
           console.error(error);
         }
       );
+    }
+
+    getFavoritePublications(): void {
+      const userId = 1; /* get the ID of the logged in user */
+      this.publicationService.getFavoritePublicationsByUserId(userId)
+        .subscribe(favoritePublications => this.favoritePublications = favoritePublications);
     }
     
   }

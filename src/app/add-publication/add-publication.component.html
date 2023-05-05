@@ -32,6 +32,16 @@
 
 
 </div>
+<button class="btn btn-primary" (click)="getFavoritePublications()">View Favorites</button>
+<ul *ngIf="favoritePublications">
+  <li *ngFor="let publication of favoritePublications">
+    {{ publication.titrePub }}
+    {{publication.contenuPub}}
+    <img [src]="publication.image" class="img-fluid">
+    {{publication.favoriteDate}}
+    {{publication.vis}}
+  </li>
+</ul>
 
 <!-- Modal Ajout -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -262,3 +272,4 @@
     </div>
   </div>
 </div>
+
