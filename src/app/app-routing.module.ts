@@ -5,7 +5,6 @@ import { BodyUserComponent } from './FrontOffice/body-user/body-user.component';
 import { AllTemplateAdminComponent } from './BackOffice/all-template-admin/all-template-admin.component';
 import { BodyAdminComponent } from './BackOffice/body-admin/body-admin.component';
 import { ResComponent } from './FrontOffice/res/res.component';
-import { PublicationComponent } from './publication/publication.component';
 import { AddPublicationComponent } from './add-publication/add-publication.component';
 
 const routes: Routes = [
@@ -13,8 +12,8 @@ const routes: Routes = [
     path: 'user',
     component: AllTemplateUserComponent,
     children: [
-      {path:'publication',component:PublicationComponent},
       {path:'addpublication',component:AddPublicationComponent},
+      
 
       {
         path: 'home',

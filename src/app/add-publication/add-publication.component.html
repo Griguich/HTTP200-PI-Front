@@ -1,75 +1,264 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-9tXH37NY+uqrGZQe7Vz8jK0o7IuTu/cyTgE1LX0pHuYZ/sokgsKUeSW+UwB8Wn+6Hpdqa6hjg6+11D8WavQrCQ==" crossorigin="anonymous" />
+
 <section class="bg-half">
-    <div class="bg-overlay"></div>
-    <div class="home-center">
-        <div class="home-desc-center">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="page-next-level text-white">
-                            <h4 class="text-uppercase">Four Colomn Work</h4>
-                            <div class="page-next"> <a href="index-2.html">Home</a><i class="mdi mdi-chevron-right"></i> &nbsp;<a href="#">About</a> <i class="mdi mdi-chevron-right"></i> &nbsp;<a href="#">Work</a> <i class="mdi mdi-chevron-right"></i> &nbsp;<span>Four Colomn Work</span> </div>
-                        </div>
-                    </div>  
-                </div>
+  <div class="bg-overlay"></div>
+  <div class="home-center">
+    <div class="home-desc-center">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+            <div class="page-next-level text-white">
+              <h4 class="text-uppercase">Four Colomn Work</h4>
+              <div class="page-next"> <a href="index-2.html">Home</a><i class="mdi mdi-chevron-right"></i> &nbsp;<a
+                  href="#">About</a> <i class="mdi mdi-chevron-right"></i> &nbsp;<a href="#">Work</a> <i
+                  class="mdi mdi-chevron-right"></i> &nbsp;<span>Four Colomn Work</span> </div>
             </div>
+          </div>
         </div>
-    </div>
-  </section>
-
-  <div class="blog_post">
-    <div class="img_pod">
-      <img src="https://pbs.twimg.com/profile_images/890901007387025408/oztASP4n.jpg" alt="random image">
-    </div>
-    <div class="container_copy">
-      <h1></h1>
-        <textarea class="text_area" placeholder="What's on your mind ??" data-toggle="modal" data-target="#exampleModalCenter" ></textarea>
-    </div>
-    
-  </div>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Add Publication</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <form #form="ngForm" (ngSubmit)="onAddPublication(form.value)">
-                <div class="form-group">
-                  <label for="titrePub">Title:</label>
-                  <input type="text" class="form-control" id="titrePub" [(ngModel)]="newPublication.titrePub" name="titrePub" placeholder="Title">
-                </div>
-      
-                <div class="form-group">
-                  <label for="publicationContent">What's on your mind?</label>
-                  <textarea class="form-control" id="publicationContent" rows="3" [(ngModel)]="newPublication.contenuPub"></textarea>
-                </div>
-      
-                <div class="form-group">
-                  <label for="publicationImage">Add an image</label>
-                  <input type="file" class="form-control-file" id="publicationImage" [(ngModel)]="newPublication.image">
-                </div>
-      
-                <div class="form-group">
-                  <select class="form-control" id="vis" [(ngModel)]="newPublication.vis" name="vis">
-                    <option value="publique">Public</option>
-                    <option value="privee">Private</option>
-                  </select>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" >Publish</button>
-        
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-
-              </form>
-        </div>
-
       </div>
     </div>
   </div>
+</section>
+
+<div class="blog_post">
+  <div class="d-flex flex-row align-items-center"> <img src="https://i.imgur.com/UXdKE3o.jpg" width="80"
+      class="rounded-circle">
+  </div>
+  <div class="container_copy">
+    <h1></h1>
+    <textarea class="text_area" placeholder="What's on your mind ??" data-toggle="modal"
+      data-target="#exampleModalCenter"></textarea>
+  </div>
+
+
+</div>
+
+<!-- Modal Ajout -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Publication</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #form="ngForm" (ngSubmit)="onAddPublication(publication)" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="titrePub">Title:</label>
+            <input type="text" class="form-control" id="titrePub" [(ngModel)]="publication.titrePub" name="titrePub"
+              placeholder="Title">
+
+          </div>
+
+          <div class="form-group">
+            <label for="contenuPub">What's on your mind?</label>
+            <textarea type="textarea" class="form-control" id="contenuPub" name="contenuPub" rows="2"
+              [(ngModel)]="publication.contenuPub"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="image">Add an image</label>
+            <input type="file" class="form-control-file" id="image" (change)="onSubmit($event)" required>
+          </div>
+
+          <div class="form-group">
+            <select class="form-control" id="vis" [(ngModel)]="publication.vis" name="vis">
+              <option value="publique">Public</option>
+              <option value="privee">Private</option>
+            </select>
+          </div>
+
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Publish</button>
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5 mb-5">
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-6">
+      <div class="card" *ngFor="let publication of publications">
+        <div class="d-flex justify-content-between p-2 px-3">
+          <div class="d-flex flex-row align-items-center"> <img src="https://i.imgur.com/UXdKE3o.jpg" width="50"
+              class="rounded-circle">
+            <div class="d-flex flex-column ml-2"> <span class="font-weight-bold">Jeanette Sun</span> <small
+                class="text-primary">{{ publication.vis }}</small> </div>
+          </div>
+          <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2">{{ publication.dateCreationPub }}</small>
+
+            <i class="fa fa-ellipsis-h " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> </i>
+            <div class="dropdown-menu dropright">
+              <a class="dropdown-item" (click)="onDeletePublication(publication.idPub)">Delete</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" (click)="selectPublication(publication)" data-toggle="modal"
+                data-target="#updatePublicationModal">Update
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- <img [src]="'data:image/png;base64,' + publication.imageBase64" *ngIf="publication.imageBase64"  class="img-fluid">-->
+
+        <img [src]="publication.image" class="img-fluid">
+        <div class="p-2">
+          <p class="text-justify">{{ publication.contenuPub }}</p>
+          <hr>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex flex-row icons d-flex align-items-center">
+               <i class="fa fa-star" (click)="toggleFavorite(publication.idPub)"></i> <i
+                class="fa fa-smile-o ml-2"></i> </div>
+                <div class="d-flex justify-content-between align-items-center muted-color">
+                  <div class="comment-count">
+                    <span>{{ publication.commentaire.length }} Comment{{ publication.commentaire.length !== 1 ? 's' : '' }}</span>
+                  </div>
+                  <i class="fa fa-thumbs-up" (click)="toggleLike(publication.idPub, 'LIKE')"></i>
+                  {{ publication.likeCount }} Like
+                <i class="fa fa-thumbs-down" (click)="toggleLike(publication.idPub, 'DISLIKE')"></i>
+                  {{ publication.dislikeCount }} DisLike
+                  
+                </div>
+              </div>
+          <hr>
+          <div class="comments">
+            <div class="comment-form"  >
+              <form (ngSubmit)="addComment(publication.idPub)">
+                <div class="form-group">
+                  <div class="comment-input"> 
+                    <input class="form-control" type="textarea" id="comment-text" [(ngModel)]="contenuComm" name="contenuComm" placeholder="Add a comment">
+      
+                    <div class="fonts">
+                      <div class="submit-button" (click)="addComment(publication.idPub)">
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                      </div>   
+                      
+                    </div>
+                  </div>                
+                </div>
+                <input type="hidden" [(ngModel)]="publication.idPub" name="publicationId">
+              </form>
+            </div>
+
+            <div class="d-flex flex-column mb-2"> 
+              <div *ngFor="let commentaire of publication.commentaire" class="d-flex flex-row mb-2">
+                <img src="https://i.imgur.com/1YrCKa1.jpg" width="40" class="rounded-image">
+                <div class="d-flex flex-column ml-2">
+                  <span class="name">Elizabeth goodmen</span>
+                  <small class="comment-text">{{ commentaire.contenuComm }}</small>
+                  <small class="mr-2">{{ commentaire.dateCreationComm }}</small>
+            <i class="fa fa-ellipsis-h " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> </i>
+            <div class="dropdown-menu dropright">
+              <a class="dropdown-item" (click)="onDeleteCommentaire(commentaire.idComm)">Delete</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" (click)="selectCommentaire(commentaire)" data-toggle="modal" data-target="#editCommentModal">Update</a>
+            </div>
+                  <div class="d-flex flex-row align-items-center status">
+                   <small> <i class="fa fa-thumbs-up" (click)="toggleLikeC(commentaire.idComm, 'LIKE')"></i></small>
+                    {{ commentaire.likeCount }} Like
+                    <small><i class="fa fa-thumbs-down" (click)="toggleLikeC(commentaire.idComm, 'DISLIKE')"></i></small>
+                    {{ commentaire.dislikeCount }} DisLike
+                    <small>Reply</small>
+                    <small>Translate</small>
+                    <small>8 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal Update -->
+<div class="modal fade" id="updatePublicationModal" tabindex="-1" role="dialog"
+  aria-labelledby="updatePublicationModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updatePublicationModalTitle">Update Publication</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" *ngIf="selectedPublication">
+        <form #form="ngForm" (ngSubmit)="updatePublication(selectedPublication)">
+          <div class="form-group">
+            <label for="titrePub">Title:</label>
+            <input type="text" class="form-control" id="titrePub" [(ngModel)]="selectedPublication.titrePub"
+              name="titrePub" placeholder="Title">
+          </div>
+
+          <div class="form-group">
+            <label for="contenuPub">What's on your mind?</label>
+            <textarea type="textarea" class="form-control" id="contenuPub" name="contenuPub" rows="2"
+              [(ngModel)]="selectedPublication.contenuPub"></textarea>
+          </div>
+
+          <div class="form-group">
+            <input type="file" class="form-control-file" id="image"  (change)="onSubmitU($event)">
+          </div>
+
+          <div class="form-group">
+            <select class="form-control" id="vis" [(ngModel)]="selectedPublication.vis" name="vis">
+              <option value="publique">Public</option>
+              <option value="privee">Private</option>
+            </select>
+          </div>
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Update</button>
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Update Comentaire -->
+<div class="modal fade" id="editCommentModal" tabindex="-1" role="dialog"
+  aria-labelledby="editCommentModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >Update commentaire</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" *ngIf="selectedCommentaire">
+        <form #form="ngForm" (ngSubmit)="updateComment(selectedCommentaire)">
+          
+
+          <div class="form-group">
+            <label for="contenuComm">What's on your mind?</label>
+            <textarea type="textarea" class="form-control" id="contenuComm" name="contenuComm" rows="2"
+              [(ngModel)]="selectedCommentaire.contenuComm"></textarea>
+          </div>
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Update</button>
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

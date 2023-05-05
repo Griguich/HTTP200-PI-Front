@@ -14,7 +14,6 @@ import { AllTemplateUserComponent } from './FrontOffice/all-template-user/all-te
 import { HomeComponent } from './FrontOffice/home/home.component';
 import { NavBarAdminComponent } from './BackOffice/nav-bar-admin/nav-bar-admin.component';
 import { ResComponent } from './FrontOffice/res/res.component';
-import { PublicationComponent } from './publication/publication.component';
 
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
@@ -25,7 +24,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDialogModule } from '@angular/material/dialog'
+import { MatDialogModule } from '@angular/material/dialog';
+import { AddCommentaireComponent } from './add-commentaire/add-commentaire.component';
 
 
 @NgModule({
@@ -48,8 +48,8 @@ import { MatDialogModule } from '@angular/material/dialog'
     BodyAdminComponent,
     FooterAdminComponent,
     ResComponent,
-    PublicationComponent,
-    AddPublicationComponent
+    AddPublicationComponent,
+    AddCommentaireComponent
   ],
   imports: [
     BrowserModule,
