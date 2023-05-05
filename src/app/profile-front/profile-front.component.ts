@@ -5,6 +5,7 @@ import { Feedback } from '../Models/Feedback';
 import { FeedbackService } from '../Services/feedback.service';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { Subject } from 'rxjs';
 declare var $: any;
 @Component({
   selector: 'app-profile-front',
@@ -25,7 +26,11 @@ export class ProfileFrontComponent {
   selectedFile!: File; 
   newFeedback: any = {};
   newRating: number = 0;
-  constructor(private profileService: ProfileService,private FeedbackService: FeedbackService) { }
+  showEditProfilePopup = false;
+  showOtherPopup = false;
+  photoprofile!: string;
+  selectedProfileSubject: Subject<Profile> = new Subject<Profile>();
+  constructor(private profileService: ProfileService,private FeedbackService: FeedbackService,private http: HttpClient) { }
   ngOnInit() {
     this.profileService.getProfiles().subscribe(profiles => {
       this.profiles = profiles;
@@ -68,10 +73,19 @@ selectProfile(profile: any) {
 */
 
   updateProfile() {
+    console.log(this.selectedProfile);
     this.profileService.updateProfile(this.selectedProfile).subscribe(res => {
       this.selectedProfile = {};
     });
+ 
   }
+  editProfile() {
+    $('#exampleModal').modal('hide'); // Hide the feedback modal
+    $('#editProfileModal').modal('show'); // Show the edit profile modal
+    // Pass the selected profile object to the edit profile modal
+    this.selectedProfileSubject.next(this.selectedProfile); 
+  }
+  
 
   deleteProfile(id: number) {
     this.profileService.deleteProfile(id).subscribe(res => {
@@ -79,6 +93,9 @@ selectProfile(profile: any) {
     });
   } 
 
+  hidepopup(){
+    $('#exampleModal').modal('hide');
+  }
   
 deleteFeedback(id: number) {
   this.profileService.deleteFeedback(id).subscribe(res => {
@@ -129,6 +146,26 @@ feedbackAnalysis(username:string){
   }); 
 }
 
-
+ onSubmit(event: Event) {
+    const fileInput = event.target as HTMLInputElement;
+    if (!fileInput.files || fileInput.files.length === 0) {
+      console.log('No file selected');
+      return;
+    }
+    this.selectedFile = fileInput.files[0];
+    this.selectedProfile.photoprofile = "/assets/images/"+this.selectedFile.name;
+    console.log(this.selectedFile.name);
+    const formData = new FormData();
+    formData.append('file', fileInput.files[0]);
+    this.http.post<any>('http://localhost:8080/api/uploadImage', formData).subscribe(
+      (res) => {
+        this.photoprofile = res.imagePath;
+        console.log(this.photoprofile);
+      },
+      (err) => {
+        console.log(err);
+      } 
+    );
+  }
 
 }

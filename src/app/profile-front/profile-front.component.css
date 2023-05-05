@@ -181,3 +181,28 @@
   align-items: center;
   justify-content: center;
 }
+
+.profile-details {
+  background-color: #333;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.profile-row {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.profile-label {
+  flex-basis: 150px;
+  font-weight: bold;
+}
+
+.profile-value {
+  flex-grow: 1;
+}
+label[for="photoprofile"] {
+  color: black;
+  left: 0px;
+}

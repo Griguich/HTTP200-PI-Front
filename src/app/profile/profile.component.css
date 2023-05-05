@@ -84,4 +84,38 @@
     width: 100%;
     background-color: rgba(0,0,0,0.7);
   }
+
+  .profile-image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+  }
+  
+  .profile-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile-row {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .profile-label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .profile-value {
+    font-size: 1.2em;
+  }
+  
   
