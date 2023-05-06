@@ -19,6 +19,7 @@ import { EvenementComponent } from './FrontOffice/evenement/evenement.component'
 import { EvenementBackendComponent } from './FrontOffice/evenement-backend/evenement-backend.component';
 import { FormationBackComponent } from './FrontOffice/formation-back/formation-back.component';
 
+
 const routes: Routes = [
   {
     path: 'user',
@@ -33,8 +34,7 @@ const routes: Routes = [
       { path : 'eventlist', component : EventListComponent},
       { path : 'formationAdd', component : FormationComponent},
       {path : 'formationlist', component : FormationListComponent  },
-      {path : 'evenement', component : EvenementComponent},
-
+      {path : 'evenement', component : EvenementComponent}
 
 
     ]
@@ -50,7 +50,7 @@ const routes: Routes = [
       { path : 'evenementbackend', component : EvenementBackendComponent},
       { path : 'formationbackend',   component : FormationBackComponent}
     ]
-  }  
+  }
   
 ];
 @NgModule({

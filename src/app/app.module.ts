@@ -31,6 +31,7 @@ import { FormationListComponent } from './FrontOffice/formation-list/formation-l
 import { FormationComponent } from './FrontOffice/formation/formation.component';
 import { EvenementComponent } from './FrontOffice/evenement/evenement.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
