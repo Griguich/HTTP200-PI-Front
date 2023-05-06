@@ -15,6 +15,7 @@ import { UserDisplayComponent } from './BackOffice/userCrud/user-display/user-di
 import { UserCreateComponent } from './BackOffice/userCrud/user-create/user-create.component';
 import { UserUpdateComponent } from './BackOffice/userCrud/user-update/user-update.component';
 import { ForgetPasswordComponent } from './FrontOffice/forget-password/forget-password.component';
+import { NotFoundComponentComponent } from './FrontOffice/not-found-component/not-found-component.component';
 const routes: Routes = [  
   {
     path: 'user',
@@ -44,6 +45,11 @@ const routes: Routes = [
   { path: '', redirectTo: 'user/home', pathMatch: 'full' },
   // { path: 'logout', component: ProfileComponent },
   { path: 'home', component: HomeComponent }, // added
+  { path: '', redirectTo: 'user/home', pathMatch:'full' },
+  { path: 'login', component: LoginComponent,},
+  { path: 'register', component: RegisterComponent,},
+  { path: 'logout', redirectTo: 'user/home' },
+//  { path: 'home', component: HomeComponent }, // added
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardWorkerComponent },
@@ -51,9 +57,10 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'usersList', component: UserDisplayComponent},
   { path: 'usersCreate', component: UserCreateComponent},
-  { path: 'usersUpdate', component: UserUpdateComponent},
+  { path: 'usersUpdate', component: UserUpdateComponent}, // To check double user udpate comp
   { path: 'ForgotPassword', component: ForgetPasswordComponent},
-  { path: 'UpdateAccount', component: UserUpdateComponent}
+  { path: 'UpdateAccount', component: UserUpdateComponent},
+  { path: '**', component: NotFoundComponentComponent },
 
   // to add 404 not found // unauthorized 403 
 

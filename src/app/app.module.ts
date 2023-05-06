@@ -29,6 +29,8 @@ import { UserUpdateComponent } from './BackOffice/userCrud/user-update/user-upda
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import { NotFoundComponentComponent } from './FrontOffice/not-found-component/not-found-component.component';
+
 
 @NgModule({
   declarations: [
@@ -59,6 +61,8 @@ import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
     UserCreateComponent,
     UserDisplayComponent,
     UserUpdateComponent,
+    NotFoundComponentComponent,
+
   ],
   imports: [
     BrowserModule,

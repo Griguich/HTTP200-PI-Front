@@ -42,11 +42,22 @@ export class UserDisplayComponent implements OnInit{
   }
 
   deleteUser(id: number){
+
     this.userService.deleteUser(id).subscribe( data => {
       console.log(data);
       this.getUsers();
 
     })
+
+    let R = confirm("Are you sure you want to delete this user?");
+    if (R){
+    this.userService.deleteUser(id).subscribe( data => {
+      console.log(data);
+      alert("Successfully deleted user!");
+      this.getUsers();
+
+    })}
+
   }
   enabledUser(id: number){
     this.userService.enableUser(id).subscribe( data => {

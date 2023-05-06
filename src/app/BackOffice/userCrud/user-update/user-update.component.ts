@@ -24,6 +24,9 @@ export class UserUpdateComponent implements OnInit{
     this.userService.addUser(this.user).subscribe( data =>{
       console.log(data);
       this.goToUserList();
+//      this.goToUserList();
+//this.router.navigateByUrl('/user/home');
+window.location.replace("/user/home");
 
     },
     error => console.log(error));
@@ -36,5 +39,7 @@ export class UserUpdateComponent implements OnInit{
   onSubmit(){
     console.log(this.user);
     this.saveUser();
+
+    this.router.navigateByUrl('/user/home');
   }
 }
