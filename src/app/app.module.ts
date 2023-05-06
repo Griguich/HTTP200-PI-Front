@@ -16,10 +16,8 @@ import { NavBarAdminComponent } from './BackOffice/nav-bar-admin/nav-bar-admin.c
 import { LoginComponent } from './FrontOffice/login/login.component';
 import { RegisterComponent } from './FrontOffice/register/register.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { httpInterceptorProviders } from './FrontOffice/_helpers/http.interceptor';
 import { BoardAdminComponent } from './BackOffice/board-admin/board-admin.component';
-import { ProfileComponent } from './BackOffice/profile/profile.component';
 import { BoardUserComponent } from './FrontOffice/board-user/board-user.component';
 import { BoardWorkerComponent } from './FrontOffice/board-worker/board-worker.component';
 import { ForgetPasswordComponent } from './FrontOffice/forget-password/forget-password.component';
@@ -30,6 +28,22 @@ import { NgxCaptchaModule } from 'ngx-captcha';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { NotFoundComponentComponent } from './FrontOffice/not-found-component/not-found-component.component';
+import { ReservationComponent } from './FrontOffice/reservation/reservation.component';
+import { ProfileComponent } from './profile/profile.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfileListComponentComponent } from './profile-list-component/profile-list-component.component';
+import { ProfileFrontComponent } from './profile-front/profile-front.component';
+import { FeedbackBackComponent } from './feedback-back/feedback-back.component';
+import { StarRatingComponent } from './star-rating/star-rating.component';
+import { Validators, FormGroup } from '@angular/forms';
+import { AllnotComponent } from './BackOffice/allnot/allnot.component';
+import { AllresComponent } from './BackOffice/allres/allres.component';
+import { EventListComponent } from './FrontOffice/event-list/event-list.component';
+import { EvenementBackendComponent } from './FrontOffice/evenement-backend/evenement-backend.component';
+import { FormationBackComponent } from './FrontOffice/formation-back/formation-back.component';
+import { FormationListComponent } from './FrontOffice/formation-list/formation-list.component';
+import { FormationComponent } from './FrontOffice/formation/formation.component';
+import { EvenementComponent } from './FrontOffice/evenement/evenement.component';
 
 
 @NgModule({
@@ -62,8 +76,23 @@ import { NotFoundComponentComponent } from './FrontOffice/not-found-component/no
     UserDisplayComponent,
     UserUpdateComponent,
     NotFoundComponentComponent,
-
+    FooterAdminComponent,  
+    ProfileComponent,
+    ProfileListComponentComponent,
+    ProfileFrontComponent,
+    FeedbackBackComponent,
+    StarRatingComponent,
+    AllnotComponent,
+    AllresComponent,
+    ReservationComponent,
+    FormationComponent,
+    EvenementComponent,
+    EventListComponent,
+    EvenementBackendComponent,
+    FormationBackComponent,
+    FormationListComponent
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -74,7 +103,8 @@ import { NotFoundComponentComponent } from './FrontOffice/not-found-component/no
     NgxPaginationModule,
     NgxQRCodeModule,
   ],
-  providers: [httpInterceptorProviders],
-  bootstrap: [AppComponent]
+  providers: [httpInterceptorProviders,
+    ReactiveFormsModule],
+     bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,7 +5,6 @@
    File Description:Main JS file of the template
 */
 (function ($) {
-
     'use strict';
     // Navbat Toggle
         var scroll = $(window).scrollTop();
@@ -91,6 +90,13 @@
             'overflow': 'visible'
         });
     });
+        $(window).on('load', function() {
+            $('#status').fadeOut();
+            $('#preloader').delay(350).fadeOut('slow');
+            $('body').delay(350).css({
+                'overflow': 'visible'
+            });
+        });
 
         // BACK TO TOP
         $(window).scroll(function(){

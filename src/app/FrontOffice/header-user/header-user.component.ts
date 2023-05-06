@@ -8,7 +8,8 @@ import { EventBusService } from '../_shared/event-bus.service';
   templateUrl: './header-user.component.html',
   styleUrls: ['./header-user.component.css']
 })
-export class HeaderUserComponent implements OnInit{
+
+export class HeaderUserComponent implements OnInit {
 
   user:any;
   connectedUser:any;
@@ -54,5 +55,4 @@ export class HeaderUserComponent implements OnInit{
       }
     });
   }
- 
 }

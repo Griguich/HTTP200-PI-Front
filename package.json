@@ -19,13 +19,13 @@
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
     "@tawk.to/tawk-messenger-angular": "^1.0.0",
+    "xlsx": "^0.18.5",
     "@techiediaries/ngx-qrcode": "^9.1.0",
     "ngx-captcha": "^13.0.0",
     "ngx-pagination": "^6.0.3",
-    "ngx-qrcode": "^0.1.0-rc.1",
+    "ngx-toastr": "^16.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "xlsx": "^0.18.5",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
@@ -33,6 +33,7 @@
     "@angular/cli": "~15.2.6",
     "@angular/compiler-cli": "^15.2.0",
     "@types/jasmine": "~4.3.0",
+    "css-loader": "^6.7.3",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
