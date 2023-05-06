@@ -13,6 +13,9 @@ import { Observable, tap } from 'rxjs';
 import { LikeService } from '../Service/like.service';
 import { Like } from '../Models/like';
 import { LikeType } from '../Models/likeType';
+import { GiphyFetch } from '@giphy/js-fetch-api';
+import { TranslateService } from '@ngx-translate/core';
+
 
 
 
@@ -55,12 +58,19 @@ export class AddPublicationComponent implements OnInit {
   favoritePublications!: Publication[];
 
 
-  constructor(private likeService: LikeService,private commentaireService: CommentaireService,private publicationService: PublicationService,private http:HttpClient, private router: Router,private modalService: NgbModal) { }
+  constructor(public translate:TranslateService,private likeService: LikeService,private commentaireService: CommentaireService,private publicationService: PublicationService,private http:HttpClient, private router: Router,private modalService: NgbModal) {
+    translate.addLangs(['en','fr','ar']);
+    translate.setDefaultLang('en');
+   }
 
+
+ 
+
+  switchlang(lang:string){
+this.translate.use(lang);
+  }
   ngOnInit(): void {
     this.getPublications();
-    
-    
   }
 
    onAddPublication(publication: Publication): void {

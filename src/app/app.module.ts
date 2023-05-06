@@ -15,7 +15,7 @@ import { HomeComponent } from './FrontOffice/home/home.component';
 import { NavBarAdminComponent } from './BackOffice/nav-bar-admin/nav-bar-admin.component';
 import { ResComponent } from './FrontOffice/res/res.component';
 
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule,HttpClient } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { AddPublicationComponent } from './add-publication/add-publication.component';
 
@@ -26,6 +26,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddCommentaireComponent } from './add-commentaire/add-commentaire.component';
+
+import { TranslateModule,TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 
 
 @NgModule({
@@ -57,9 +61,20 @@ import { AddCommentaireComponent } from './add-commentaire/add-commentaire.compo
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
+export function httpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, '/assets/i18n/', '.json');
+}
+
