@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
   template: '<router-outlet></router-outlet>',
   //styleUrls: ['./app.component.css']
 })
+
 export class AppComponent  implements OnInit{
   title = 'FrontWebProject';
   private roles: string[] = [];
@@ -55,4 +56,5 @@ export class AppComponent  implements OnInit{
       }
     });
   }
+ // styleUrls: ['./app.component.css']
 }
