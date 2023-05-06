@@ -1,3 +1,4 @@
+
 <br><br>
 <div class="row tm-content-row tm-mt-big" style="width: auto; height: auto;">
     <div class="col-xl-12 col-lg-12 tm-md-12 tm-sm-8 tm-col">
@@ -23,40 +24,23 @@
                           <th scope="col" class="text-center">Email</th>
                           <th scope="col" class="text-center">Phone Number</th>
                           <th scope="col" class="text-center">Birthday</th>
-                          <th scope="col" class="text-center">Password</th>
-                                    <th scope="col">Actions</th>
                                     <th scope="col">Actions</th>
                                     <th scope="col" class="text-center">Enabling User</th>
                                     <th scope="col" class="text-center">Disabling User</th>
                                     <th scope="col" class="text-center">QR Code</th>
 
+
+
                         </tr>
                     </thead>
                     <tbody>
-
-                        <tr style="height:200px" *ngFor = "let i of user | paginate: { itemsPerPage: 5, currentPage: p, id:'first' }">
-
                         <tr *ngFor = "let i of user | paginate: { itemsPerPage: 5, currentPage: p, id:'first' }">
-
         <td class="text-center">{{ i.username }}</td>
         <td class="text-center">{{ i.nom }}</td>
         <td class="text-center">{{ i.prenom }}</td>
         <td class="text-center">{{ i.email }}</td>
         <td class="text-center">{{ i.phoneNumber }}</td>
         <td class="text-center">{{ i.birthDate }}</td>
-
-        <td class="text-center">{{ i.password }}</td>
-                            <td class="text-center"><i class="fas fa-trash-alt tm-trash-icon"  style="font-size: 30px;" (click) = "deleteUser(i.id)"></i>
-                                <td class="text-center"><button class="btn-primary" (click) = "enabledUser(i.id)">Enable User</button>
-                                    <td class="text-center"><button class="button btn-primary" (click) = "disableUser(i.id)">Disable User</button>
-                                        <td class="text-center">
-                                            <ngx-qrcode 
-                                              [elementType]="elementType" 
-                                              [value]="' === User Info: ==== \n * Username: ' + i.username + '\n * First Name: ' + i.nom + '\n * Birthdate: ' + i.birthDate + '\n * Phone Number: ' + i.phoneNumber"  
-                                              [errorCorrectionLevel]="correctionLevel">
-                                            </ngx-qrcode>                                          
-                                         <br>
-
                             <td class="text-center"><i class="fas fa-trash-alt tm-trash-icon"  style="font-size: 30px;" (click) = "deleteUser(i.id)"></i>
                                 <td class="text-center"><button class="btn-primary" (click) = "enabledUser(i.id)">Enable User</button>
                                     <td class="text-center"><button class="button btn-primary" (click) = "disableUser(i.id)">Disable User</button>
@@ -67,7 +51,6 @@
                                               [errorCorrectionLevel]="correctionLevel"
                                               [width]="100">
                                             </ngx-qrcode>                                          
-
                                      </td>
                                 </tr>
                          </tbody>
