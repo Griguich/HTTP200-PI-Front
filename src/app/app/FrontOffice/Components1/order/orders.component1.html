@@ -1,0 +1,445 @@
+<!-- <app-header-user></app-header-user> -->
+<!-- Navigation Bar-->
+<div>
+  <div class="tagline hidden-md">
+    <div class="container">
+      <div class="float-left">
+        <div class="phone">  Connecting You to Opportunities+ Connecting You to Opportunities </div>
+      </div>
+      <div class="float-right">
+        <ul class="top_socials">
+          <li>
+            <a href="#"><img src="facebook.svg" /></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-dribbble"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <!-- Navigation Bar-->
+  <header
+    id="topnav"
+    class="defaultscroll fixed-top navbar-sticky sticky"
+    style="position: sticky"
+  >
+    <div class="container">
+      <!-- Logo container-->
+      <div>
+        <a href="index-2.html" class="logo" style="margin-bottom: 15px">
+          <img src="/assets/images/carrerBlack.png" alt="missing_logo" height="70" />
+        </a>
+      </div>
+      <!-- End Logo container-->
+      <div class="menu-extras">
+        <div class="menu-item">
+          <!-- Mobile menu toggle-->
+          <a class="navbar-toggle">
+            <div class="lines">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </a>
+          <!-- End mobile menu toggle-->
+        </div>
+      </div>
+
+      <div id="navigation">
+        <!-- Navigation Menu-->
+        <ul class="navigation-menu">
+          <li class="has-submenu" style="margin-left: 10px">
+            <a routerLinkActive="active">
+              <div>
+                <i
+                  class="fa-solid fa-cart-shopping"
+                  style="font-size: 20px"
+                ></i>
+                <span
+                  *ngIf="selectedProducts.length>0"
+                  class="notification-circle"
+                  style="
+                    border-radius: 50%;
+                    background-color: red;
+                    padding: 5px;
+                    color: white;
+                  "
+                  >{{selectedProducts.length}}</span
+                >
+              </div> </a
+            ><span class="cart"></span>
+            <ul class="submenu" style="width: 500px">
+              <div class="cart">
+                <h3>Cart <i class="fas fa-shopping-cart"></i></h3>
+                <div *ngFor="let product of selectedProducts" class="cart-item">
+                  <img
+                    style="margin-left: 1%"
+                    src="/assets/images/{{ product.image }}"
+                    class="cart-item-img"
+                    alt="{{ product.name }}"
+                  />
+                  <h5>{{ product.name }}</h5>
+                  <p style="margin-left: 5%; width: 120px">
+                    {{ product.price| currency:'USD' }} x {{ product.quantity }}
+                  </p>
+                  <button
+                    (click)="addQuantity(product)"
+                    class="btn btn-primary"
+                    style="margin-left: 8%"
+                  >
+                    +
+                  </button>
+                  <button
+                    (click)="removeProduct(product)"
+                    class="btn btn-primary"
+                    style="margin-left: 1.5%"
+                  >
+                    -
+                  </button>
+                  <button
+                    (click)="deleteRow(product)"
+                    class="btn btn-danger"
+                    style="margin-left: 1.5%"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+              <br />
+              <div style="text-align: center">
+                <h4>Total Price: {{ getTotal() | currency }}</h4>
+                <form #stripeForm="ngForm">
+                  <div>
+                    <button
+                      type="submit"
+                      (click)="submitOrder()"
+                      class="btn btn-success"
+                      style="margin: auto"
+                    >
+                      Submit Order
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div *ngIf="showConfirmationModal" class="modal">
+                <div
+                  class="modal-content"
+                  style="
+                    align-items: center;
+                    background: rgb(255, 250, 255, 0.3);
+                  "
+                >
+                  <h3 style="font-weight: bold; color: white">
+                    You didn't forget something else! Can we continue?
+                  </h3>
+                  <div>
+                    <button
+                      (click)="onDeclineOrder()"
+                      class="btn btn-danger"
+                      style="width: 200px"
+                    >
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <button
+                      (click)="onAcceptOrder()"
+                      class="btn btn-success"
+                      style="width: 200px"
+                    >
+                      <i class="fa-solid fa-check"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div id="card-element" *ngIf="showConfirmationModal"></div>
+            </ul>
+          </li>
+
+          <li class="has-submenu" style="margin-left: 10px">
+            <a routerLinkActive="active">
+              <div>
+                <i class="fa-regular fa-heart" style="font-size: 20px"></i>
+              </div> </a
+            ><span class="cart"></span>
+            <ul class="submenu" style="width: 500px">
+              <div class="cart">
+                <h3>Favorite prodcuts</h3>
+                <div *ngFor="let product of products" class="cart-item">
+                  <p style="margin-right: 25%; visibility: hidden">x</p>
+                  <img
+                    *ngIf="product.status==='liked'"
+                    style="margin-left: 1%"
+                    src="/assets/images/{{ product.image }}"
+                    class="cart-item-img"
+                    alt="{{ product.name }}"
+                  />
+                  <h5 *ngIf="product.status==='liked'">{{ product.name }}</h5>
+
+                  <button
+                    *ngIf="product.status==='liked'"
+                    (click)="product.status='unliked'"
+                    class="btn btn-danger"
+                    style="margin-left: 10.5%"
+                  >
+                    <i class="fa-regular fa-heart" style="font-size: 20px"></i>
+                  </button>
+                </div>
+              </div>
+
+              <br />
+
+              <div id="card-element" *ngIf="showConfirmationModal"></div>
+            </ul>
+          </li>
+
+          <li class="has-submenu">
+            <a routerLink="/user/home" routerLinkActive="active"
+              ><i class="fa-solid fa-house" style="font-size: 20px"></i
+            ></a>
+          </li>
+
+          <li class="has-submenu" style="margin-left: 10px">
+            <a routerLinkActive="active"
+              ><i class="fa-regular fa-user" style="font-size: 20px"></i></a
+            ><span class="cart"></span>
+          </li>
+          <li></li>
+        </ul>
+        <!-- End navigation menu-->
+      </div>
+    </div>
+  </header>
+  <!-- End Navigation Bar-->
+
+  <div class="container" style="margin-top: 5%">
+    <div><h2 style="font-weight: bold">Product List</h2></div>
+    <div class="row">
+      <div
+        *ngFor="let product of products; let i = index"
+        class="col-md-4 col-sm-6"
+      >
+        <div class="card" style="background-color: #85ffbd">
+          <img
+            src="/assets/images/{{ product.image }}"
+            class="card-img-top"
+            alt="{{ product.name }}"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+            <p class="card-text">{{ product.image }}</p>
+            <p class="card-price">${{ product.price }}</p>
+            <div>
+              <i
+                class="fa-solid fa-cart-shopping"
+                (click)="productId = product.id; quantity = 1; addProduct()"
+              ></i>
+              <i
+                class="fa-regular fa-heart"
+                style="font-size: 20px; margin: auto; visibility: hidden"
+              ></i>
+
+              <i
+                *ngIf="product.status === 'unliked'"
+                class="fa-regular fa-heart"
+                style="font-size: 20px; margin: auto"
+                (click)="product.status = 'liked'"
+              ></i>
+              <i
+                (click)="product.status = 'unliked'"
+                *ngIf="product.status==='liked'"
+                class="fa-regular fa-heart"
+                style="font-size: 20px; margin: auto; color: red"
+              ></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--   <div class="cart">
+    <h3>Cart <i class="fas fa-shopping-cart"></i></h3>
+    <div *ngFor="let product of selectedProducts" class="cart-item">
+      <img src="/assets/images/{{ product.image }}" class="cart-item-img" alt="{{ product.name }}">
+      <div class="cart-item-info">
+        <h5>{{ product.name }}</h5>
+        <p>${{ product.price }} x {{ product.quantity }}</p>
+      </div>
+      <div class="cart-item-controls">
+        <button (click)="addQuantity(product)" class="btn btn-primary">+</button>
+        <button (click)="removeProduct(product)" class="btn btn-primary">-</button>
+        <button (click)="deleteRow(product)" class="btn btn-danger">Remove</button>
+      </div>
+    </div>
+    <h4>Total Price: {{ getTotal() }}</h4>
+    <form #stripeForm="ngForm">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="withShipping" [(ngModel)]="withShipping">
+        <label class="form-check-label" for="withShipping">
+          Add Shipping
+        </label>
+      </div>
+      <button type="submit" (click)="submitOrder()" class="btn btn-success">Submit Order</button>
+    </form>
+  </div>
+  <div *ngIf="showConfirmationModal" class="modal">
+    <div class="modal-content">
+      <h3>You didn't forget something else! Can we continue?</h3>
+      <button (click)="onAcceptOrder()" class="btn btn-success">Yes, continue</button>
+      <button (click)="onDeclineOrder()" class="btn btn-danger">No, cancel</button>
+    </div>
+  </div>
+  <div id="card-element" *ngIf="showConfirmationModal"></div>
+
+
+</div> -->
+  </div>
+</div>
+<!-- FOOTER START -->
+<footer class="footer">
+  <div class="section-two">
+    <div class="container">
+      <!--Footer Info -->
+      <div class="row footer-info">
+        <div class="col-lg-3 col-md-12 col-sm-12">
+          <div class="">
+            <a href="index-2.html" class="logo">
+              <img
+                src="/assets/images/logo.png.png"
+                alt="missing_logo"
+                height="120"
+              />
+            </a>
+          </div>
+          <p class="text-footer-clr mt-3" style="text-align: center">
+            These cases are perfectly simple and easy to free hour, when nothing
+            prevents distinguish.
+          </p>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-4">
+          <div class="footer-head">
+            <h5 class="text-light">Company</h5>
+          </div>
+          <div class="footer-item mt-3">
+            <ul class="list-unstyled">
+              <li>
+                <a href="#"
+                  ><i class="fas fa-chevron-right mr-2"></i> About us</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-chevron-right mr-2"></i> Services</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-chevron-right mr-2"></i> Portfolio</a
+                >
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-chevron-right mr-2"></i> News</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-chevron-right mr-2"></i> FAQ</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-4">
+          <div class="footer-head">
+            <h5 class="text-light">Useful</h5>
+          </div>
+          <div class="footer-item mt-3">
+            <ul class="list-unstyled">
+              <li>
+                <a href="#"
+                  ><i class="fas fa-chevron-right mr-2"></i> Accounts</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-chevron-right mr-2"></i> Sales & Support</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-chevron-right mr-2"></i> Orders Track</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-chevron-right mr-2"></i> Download Center</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-4">
+          <div class="footer-head">
+            <h5 class="text-light">Additional</h5>
+          </div>
+          <div class="footer-item mt-3">
+            <ul class="list-unstyled">
+              <li>
+                <a href="#"
+                  ><i class="fas fa-chevron-right mr-2"></i> Portfolio</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-chevron-right mr-2"></i> Contact Us</a
+                >
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-chevron-right mr-2"></i> Blog</a>
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-chevron-right mr-2"></i> Help Center</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="footer-head">
+            <h5 class="text-light">Newsletter</h5>
+          </div>
+          <div class="footer-news mt-3">
+            <p class="text-footer-clr">
+              Subscribe to our email newsletter to receive useful articles and
+              special offers.
+            </p>
+            <div class="subscribed-form">
+              <div class="subcribed-form">
+                <form action="#">
+                  <input
+                    name="email"
+                    type="email"
+                    placeholder="Your Email"
+                    id="email"
+                    required=""
+                  />
+                  <button type="submit" class="">
+                    <span class="fab fa-telegram-plane"></span>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Footer Info -->
+    </div>
+  </div>
+</footer>

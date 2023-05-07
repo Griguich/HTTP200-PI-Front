@@ -28,9 +28,14 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
-              "src/assets/css/menu.css"
+              "src/assets/css/menu.css",
+              "node_modules/magnific-popup/dist/magnific-popup.css",
+              "src/styles.css"
             ],
-            "scripts": []
+            "scripts": ["node_modules/jquery/dist/jquery.min.js",
+            "node_modules/@popperjs/core/dist/umd/popper.min.js",
+            "node_modules/bootstrap/dist/js/bootstrap.min.js",
+            "node_modules/magnific-popup/dist/jquery.magnific-popup.min.js"]
           },
           "configurations": {
             "production": {
@@ -91,12 +96,17 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/css/menu.css"
+              "src/assets/css/menu.css",
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.css"
             ],
             "scripts": []
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
