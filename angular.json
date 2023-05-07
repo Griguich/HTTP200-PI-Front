@@ -22,11 +22,14 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/i18n"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-             "node_modules/magnific-popup/dist/magnific-popup.css",
+              "src/styles.css",
+              "src/assets/css/menu.css",
+              "node_modules/magnific-popup/dist/magnific-popup.css",
               "src/styles.css"
             ],
             "scripts": ["node_modules/jquery/dist/jquery.min.js",
@@ -92,6 +95,8 @@
               "src/assets"
             ],
             "styles": [
+              "src/styles.css",
+              "src/assets/css/menu.css",
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],

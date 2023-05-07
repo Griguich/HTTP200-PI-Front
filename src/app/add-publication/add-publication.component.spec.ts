@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ListOrderComponent } from './list-order.component';
+import { AddPublicationComponent } from './add-publication.component';
+import { ListOrderComponent } from '../app/BackOffice/list-order/list-order.component';
 
 describe('ListOrderComponent', () => {
   let component: ListOrderComponent;
