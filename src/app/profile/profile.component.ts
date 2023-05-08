@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ProfileService } from '../Services/profile.service';
 import { HttpClient } from '@angular/common/http';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
+import { StorageService } from '../FrontOffice/Services/storage.service';
 
 @Component({
   selector: 'app-profile',
@@ -31,12 +32,17 @@ export class ProfileComponent {
 
   
   ngOnInit(): void {
-    this.getProfiles();
+   // this.storage_service.getUser();
+   //  console.log("accessToken",this.storage_service.getUser());
+   const token = localStorage.getItem('token');
+  console.log(token); 
+   this.getProfiles();
     this.profileForm = new FormGroup({
       'username': new FormControl(null, Validators.required),
       'sex': new FormControl(null, Validators.required),
       'category': new FormControl(null, Validators.required)
-    });
+    }); 
+
   }
 
   getProfiles() {
@@ -77,6 +83,6 @@ export class ProfileComponent {
     );
   }
   
-  
+
   
 }

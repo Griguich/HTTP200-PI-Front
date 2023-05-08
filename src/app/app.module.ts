@@ -15,7 +15,7 @@ import { HomeComponent } from './FrontOffice/home/home.component';
 import { NavBarAdminComponent } from './BackOffice/nav-bar-admin/nav-bar-admin.component';
 import { LoginComponent } from './FrontOffice/login/login.component';
 import { RegisterComponent } from './FrontOffice/register/register.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule, HttpEvent, HttpHandler, HttpRequest } from '@angular/common/http';
 import { httpInterceptorProviders } from './FrontOffice/_helpers/http.interceptor';
 import { BoardAdminComponent } from './BackOffice/board-admin/board-admin.component';
 import { BoardUserComponent } from './FrontOffice/board-user/board-user.component';
@@ -44,6 +44,10 @@ import { FormationBackComponent } from './FrontOffice/formation-back/formation-b
 import { FormationListComponent } from './FrontOffice/formation-list/formation-list.component';
 import { FormationComponent } from './FrontOffice/formation/formation.component';
 import { EvenementComponent } from './FrontOffice/evenement/evenement.component';
+import { Observable } from 'rxjs';
+import { MyprofileComponent } from './myprofile/myprofile.component';
+
+
 
 
 @NgModule({
@@ -90,7 +94,8 @@ import { EvenementComponent } from './FrontOffice/evenement/evenement.component'
     EventListComponent,
     EvenementBackendComponent,
     FormationBackComponent,
-    FormationListComponent
+    FormationListComponent,
+    MyprofileComponent
   ],
   
   imports: [
@@ -103,8 +108,32 @@ import { EvenementComponent } from './FrontOffice/evenement/evenement.component'
     NgxPaginationModule,
     NgxQRCodeModule,
   ],
-  providers: [httpInterceptorProviders,
+  providers: 
+
+  [  {
+    provide: HTTP_INTERCEPTORS,
+    useValue: {
+      intercept: (req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> => {
+        const token = localStorage.getItem('token');
+
+        if (token) {
+          req = req.clone({
+            setHeaders: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+        }
+
+        return next.handle(req);
+      }
+    },
+    multi: true
+  }
+  ,
     ReactiveFormsModule],
-     bootstrap: [AppComponent]
+     bootstrap: [AppComponent],
+     
+     
+     
 })
 export class AppModule { }
