@@ -1,4 +1,5 @@
 import { Feedback } from "./Feedback";
+import { User } from "./user";
 
 export class Profile {
   id!: number;
@@ -8,6 +9,7 @@ export class Profile {
   isVerified: boolean = false;
   photoprofile!: string;
   feedbackList: Feedback[] = [];
+  user: User = new User;
 }
 
 export enum Categorie {

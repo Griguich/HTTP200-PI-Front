@@ -1,21 +1,18 @@
 import { Component } from '@angular/core';
 import { Profile } from '../Models/Profile';
-import { ProfileService } from '../Services/profile.service';
 import { Feedback } from '../Models/Feedback';
+import { ProfileService } from '../Services/profile.service';
+import { Subject } from 'rxjs';
+import { StorageService } from '../FrontOffice/Services/storage.service';
 import { FeedbackService } from '../Services/feedback.service';
 import { HttpClient } from '@angular/common/http';
-import { NgForm } from '@angular/forms';
-import { Subject } from 'rxjs';
-import { AuthService } from '../FrontOffice/Services/auth.service';
-import { User } from '../Models/user';
-import { StorageService } from '../FrontOffice/Services/storage.service';
-declare var $: any;
+
 @Component({
-  selector: 'app-profile-front',
-  templateUrl: './profile-front.component.html',
-  styleUrls: ['./profile-front.component.css']
+  selector: 'app-myprofile',
+  templateUrl: './myprofile.component.html',
+  styleUrls: ['./myprofile.component.css']
 })
-export class ProfileFrontComponent { 
+export class MyprofileComponent {
   myInput: string = "";
   profiles: Profile[] = [];
   Feedbacks : Feedback[] = [];
@@ -25,7 +22,6 @@ export class ProfileFrontComponent {
   newProfile: any = {}; 
   stars: number[] = [1, 2, 3, 4, 5];
   selectedValue!: number;
-  feedback : Feedback[] = [];
   analysisImage !: string;
   selectedFile!: File; 
   newFeedback: any = {};
@@ -33,21 +29,15 @@ export class ProfileFrontComponent {
   showEditProfilePopup = false;
   showOtherPopup = false;
   photoprofile!: string;
-  user: User = new User;
   selectedProfileSubject: Subject<Profile> = new Subject<Profile>();
-  constructor(private storageService: StorageService, private profileService: ProfileService,private FeedbackService: FeedbackService,private http: HttpClient) { }
+  constructor(private storageService: StorageService, private profileService: ProfileService,private FeedbackService : FeedbackService,private http: HttpClient) { }
   ngOnInit() {
-    this.profileService.getProfiles().subscribe(profiles => {
+    this.profileService.getMyProfile().subscribe(profiles => {
       this.profiles = profiles;
     });
-    this.user = this.storageService.getUser();
+   // this.user = this.storageService.getUser();
   }  
 
-  getProfiles() {
-    this.profileService.getProfiles().subscribe(res => {
-      this.profiles = res;
-    });
-  }
 
   selectProfile(profile: any) {
     this.selectedProfile = profile;
@@ -89,8 +79,6 @@ selectProfile(profile: any) {
   
 
   editProfile() {
-    $('#exampleModal').modal('hide'); // Hide the feedback modal
-    $('#editProfileModal').modal('show'); // Show the edit profile modal
     // Pass the selected profile object to the edit profile modal
     this.selectedProfileSubject.next(this.selectedProfile); 
   }
@@ -101,11 +89,6 @@ selectProfile(profile: any) {
       this.profiles = this.profiles.filter(p => p.id !== id);
     });
   } 
-
-  hidepopup(){
-    $('#exampleModal').modal('hide');
-  }
-  
 deleteFeedback(id: number) {
   this.profileService.deleteFeedback(id).subscribe(res => {
     this.Feedbacks = this.Feedbacks.filter(p => p.id !== id);
@@ -133,7 +116,7 @@ addFeedback() {
     this.newFeedback.createdDate = Date.now();
     this.newFeedback.updatedDate = Date.now();
     console.log(this.newFeedback);
-    this.FeedbackService.addFeedback(this.newFeedback).subscribe(res => {
+    this.FeedbackService.addFeedback(this.newFeedback).subscribe((res: Feedback) => {
       this.Feedbacks.push(res);
       this.newFeedback = {};
     });
@@ -179,9 +162,11 @@ feedbackAnalysis(username:string){
 
   isCreator(): boolean {
     console.log("selected profile",this.selectedProfile.user.nom);
-    console.log("User",this.user.nom);
-    console.log(this.selectedProfile.user.name === this.user.nom);
-    return this.selectedProfile.user === this.user.nom;
+   // console.log("User",this.user.nom);
+   // console.log(this.selectedProfile.user.name === this.user.nom);
+   // return this.selectedProfile.user === this.user.nom;
+   return true;
   }
+
 
 }
