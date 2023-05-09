@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Feedback } from '../Models/Feedback';
+import { StorageService } from '../FrontOffice/Services/storage.service';
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
   newProfile: any;
   file!: string | Blob;
+  constructor(private http: HttpClient,private storage_service:StorageService) { 
+  }  
+  
 
-  constructor(private http: HttpClient) { } 
   private endpoint = 'http://localhost:8080/api';
 
 getProfiles(): Observable<any> {

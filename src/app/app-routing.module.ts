@@ -36,57 +36,48 @@ const routes: Routes = [
     path: 'user',
     component: AllTemplateUserComponent,
     children: [
-     {path: 'home', component: BodyUserComponent,},
-      { path: 'UpdateAccount', component: UserUpdateComponent,}, 
       { path: 'home', component: BodyUserComponent },
-      { path: 'profile/add-profile', component: ProfileComponent }, // To Verify My Profile with Hama's!
+      { path: 'UpdateAccount', component: UserUpdateComponent },
+      { path: 'profile/add-profile', component: ProfileComponent },
       { path: 'profile/display', component: ProfileFrontComponent },
       { path: 'reservation', component: ReservationComponent },
       { path: 'not', component: NotificationPopupComponent },
       { path: 'chat', component: ChatComponent },
-      { path : 'eventlist', component : EventListComponent},
-      { path : 'formationAdd', component : FormationComponent},
-      {path : 'formationlist', component : FormationListComponent  },
-      {path : 'evenement', component : EvenementComponent}
-    ]
+      { path: 'eventlist', component: EventListComponent },
+      { path: 'formationAdd', component: FormationComponent },
+      { path: 'formationlist', component: FormationListComponent },
+      { path: 'evenement', component: EvenementComponent },
+      { path: 'allres', component: AllresComponent },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+    ],
   },
   {
     path: 'admin',
     component: AllTemplateAdminComponent,
     children: [
-      {path : 'home',
-    component : BodyAdminComponent}
-    ]
+      { path: 'home', component: BodyAdminComponent },
+      { path: 'allres', component: AllresComponent },
+    ],
   },
-  { path: 'login', component: LoginComponent,},
-  { path: 'register', component: RegisterComponent,},
-  { path: '', redirectTo: 'user/home', pathMatch: 'full' },
-  // { path: 'logout', component: ProfileComponent },
-  { path: 'home', component: HomeComponent }, // added
-  { path: '', redirectTo: 'user/home', pathMatch:'full' },
-  { path: 'login', component: LoginComponent,},
-  { path: 'register', component: RegisterComponent,},
-  { path: 'logout', redirectTo: 'user/home' },
-  //  { path: 'home', component: HomeComponent }, // added
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'logout', redirectTo: 'user/home', pathMatch: 'full' },
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardWorkerComponent },
   { path: 'admin', component: BoardAdminComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'usersList', component: UserDisplayComponent},
-  { path: 'usersCreate', component: UserCreateComponent},
-  { path: 'usersUpdate', component: UserUpdateComponent}, // To check double user udpate comp
-  { path: 'ForgotPassword', component: ForgetPasswordComponent},
-  { path: 'UpdateAccount', component: UserUpdateComponent},
-  { path: '**', component: NotFoundComponentComponent },
-  // to add 404 not found // unauthorized 403 
+  { path: 'usersList', component: UserDisplayComponent },
+  { path: 'usersCreate', component: UserCreateComponent },
+  { path: 'usersUpdate', component: UserUpdateComponent },
+  { path: 'ForgotPassword', component: ForgetPasswordComponent },
   { path: 'profile/update-profile', component: ProfileListComponentComponent },
-  { path: 'home', component: BodyAdminComponent },
   { path: 'allnot', component: AllnotComponent },
-  { path: 'allres', component: AllresComponent },
-  { path : 'evenementbackend', component : EvenementBackendComponent},
-  { path : 'formationbackend',   component : FormationBackComponent}
+  { path: 'evenementbackend', component: EvenementBackendComponent },
+  { path: 'formationbackend', component: FormationBackComponent },
+  { path: '**', component: NotFoundComponentComponent },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

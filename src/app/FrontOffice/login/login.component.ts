@@ -45,6 +45,8 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(username, password).subscribe({
       next: data => {
+        console.log(data);
+        localStorage.setItem('token',data['accessToken']);
         this.storageService.saveUser(data);
 
         this.isLoginFailed = false;
