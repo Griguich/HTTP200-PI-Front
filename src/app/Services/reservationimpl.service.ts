@@ -9,7 +9,7 @@ import { Reservation } from '../Models/reservation';
 export class ReservationimplService {
   constructor(private http: HttpClient) { } 
 
-  private endpoint = 'http://localhost:8080/api';
+  private endpoint = 'http://backend:8080/api';
 
   getAllRes(): Observable<any> {
     const url = `${this.endpoint}/GetAllRes`;

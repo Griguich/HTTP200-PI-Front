@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/Models/user';
 
-const AUTH_API = 'http://localhost:8080/api/auth/';
+const AUTH_API = 'http://backend:8080/api/auth/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -64,7 +64,7 @@ deleteUser(idUser: any){
 }
 
 public addUser(user :User):Observable<any>{
-  return this.http.post<any>("http://localhost:8080/api/auth/addUser",user)
+  return this.http.post<any>("http://backend:8080/api/auth/addUser",user)
 
 }
 public lockUser(user: any):Observable<any>{
@@ -72,10 +72,10 @@ public lockUser(user: any):Observable<any>{
 
 } 
 updatePassword(email: string, password: string) {
-  return this.http.put('http://localhost:8080/api/auth/updatepassword/' + email + '/' + password  + '/' + password , { responseType: 'text' });
+  return this.http.put('http://backend:8080/api/auth/updatepassword/' + email + '/' + password  + '/' + password , { responseType: 'text' });
 }
 forgotPassword(email: string) {
-  return this.http.get('http://localhost:8080/api/auth/sendme/' + email);
+  return this.http.get('http://backend:8080/api/auth/sendme/' + email);
 }
 enableUser(id: number){
   return this.http.put(`${AUTH_API}enable/${id}`,null)

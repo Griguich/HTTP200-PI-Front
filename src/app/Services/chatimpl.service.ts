@@ -9,7 +9,7 @@ import { ChatMessage } from '../Models/chat';
 })
 export class ChatimplService {
 
-  private baseUrl = 'http://localhost:8080'; // Replace with your Spring Boot API URL
+  private baseUrl = 'http://backend:8080'; // Replace with your Spring Boot API URL
 
   constructor(private http: HttpClient) { }
 

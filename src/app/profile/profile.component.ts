@@ -72,7 +72,7 @@ export class ProfileComponent {
     console.log(this.selectedFile.name);
     const formData = new FormData();
     formData.append('file', fileInput.files[0]);
-    this.http.post<any>('http://localhost:8080/api/uploadImage', formData).subscribe(
+    this.http.post<any>('http://backend:8080/api/uploadImage', formData).subscribe(
       (res) => {
         this.photoprofile = res.imagePath;
         console.log(this.photoprofile);

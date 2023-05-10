@@ -24,8 +24,6 @@ export class UserUpdateComponent implements OnInit{
     this.userService.addUser(this.user).subscribe( data =>{
       console.log(data);
       this.goToUserList();
-//      this.goToUserList();
-//this.router.navigateByUrl('/user/home');
 window.location.replace("/user/home");
 
     },

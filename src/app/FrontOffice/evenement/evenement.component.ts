@@ -48,7 +48,7 @@ export class EvenementComponent implements OnInit {
     });
   }
   onCapture() {
-    const url = 'http://localhost:5000/my-python-api'; // Replace with your Flask API URL
+    const url = 'http://backend:5000/my-python-api'; // Replace with your Flask API URL
     this.http.get(url).subscribe(result => {
         console.log(result);
     });

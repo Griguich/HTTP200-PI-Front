@@ -53,7 +53,7 @@ export class FormationComponent {
   }
 
   onIA() {
-    const url = 'http://localhost:5000/IAVOICE'; // Replace with your Flask API URL
+    const url = 'http://backend:5000/IAVOICE'; // Replace with your Flask API URL
     this.http.get(url).subscribe(result => {
         console.log(result);
     });

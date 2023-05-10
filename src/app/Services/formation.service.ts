@@ -8,7 +8,7 @@ import { StorageService } from '../FrontOffice/Services/storage.service';
   providedIn: 'root'
 })
 export class FormationService {
-  private baseUrl = 'http://localhost:8080/api/formation/';
+  private baseUrl = 'http://backend:8080/api/formation/';
   constructor(private http: HttpClient,private storage_service:StorageService) { 
 
   }

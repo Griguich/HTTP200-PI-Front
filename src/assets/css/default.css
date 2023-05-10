@@ -21,11 +21,14 @@
 .btn:focus,
 button,
 .form-control:focus,
+.btn,
+.btn:focus,
+button,
+.form-control:focus,
 button:focus {
     outline: none !important;
     box-shadow: none !important;
     border-color: transparent;
-    !important;
 }
 
 .bg-custom,

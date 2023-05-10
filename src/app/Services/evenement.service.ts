@@ -7,7 +7,7 @@ import { Evenement } from '../Models/evenement';
   providedIn: 'root'
 })
 export class EvenementService {
-  private baseUrl  = 'http://localhost:8080/api/evenement/'; 
+  private baseUrl  = 'http://backend:8080/api/evenement/'; 
   constructor(private http: HttpClient) { }
 
  addEvenement(evenement: Evenement): Observable<any> {
@@ -44,7 +44,7 @@ export class EvenementService {
   }
 
   onCapture() {
-    const url = 'http://localhost:5000/my-python-api'; 
+    const url = 'http://backend:5000/my-python-api'; 
     this.http.get(url).subscribe(result => {
         console.log(result);
     });
